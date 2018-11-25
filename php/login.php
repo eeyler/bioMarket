@@ -22,9 +22,9 @@ if ($userlevel == "visitor")
   <div class="login-wrap">
     <h2>Login to an existing account</h2>
         <p>Email address</p>
-    <input type="text" name="email" placeholder="Your email address ...">
+    <input type="text" name="e_mail" placeholder="Your email address ...">
         <p>Password</p>
-    <input type="password" name="password" placeholder="Your password ...">
+    <input type="password" name="pswrd" placeholder="Your password ...">
     <p class="forgot-password"><a href="?page=resetpassword">Forgot password?</a></p>
 
     <button class="btn-login" type="submit">LOGIN</button>
@@ -46,20 +46,26 @@ if (!is_logged_in()){
       $login_action = "?page=login";
       
 }
-if (is_logged_in()){
-    
-    $login_action = "?page=login";
+$userlevel = get_user_level();
+
+
+if ($userlevel == "admin"){
+    if (is_logged_in()){
 
  
-    if ($userlevel == "admin")
-    {
+
     include "admin_panel_connection.php";
-    
+
     }
-    if ($userlevel == "member")
-    {
+}
+
+if ($userlevel == "member"){
+    if (is_logged_in()){    
+
+      
     include "user_panel_connection.php";
-    
+
     }
+
 }
 ?>

@@ -21,8 +21,8 @@ mysqli_query  ($mysqli, "SET NAMES UTF8");
 
 include "php/config.php";
 
-if (isset($_POST["password"]) && isset($_POST["email"])) {
-    login($_POST["email"], $_POST["password"]);
+if (isset($_POST["pswrd"]) && isset($_POST["e_mail"])) {
+    login($_POST["e_mail"], $_POST["pswrd"]);
 }
 //unset (login());
 if (isset($_GET["logout"])) {

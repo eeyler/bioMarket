@@ -8,8 +8,8 @@
 </head>
 
 <body>
-
-<a href="#"><button class="btn-register">New Supplier Order</button></a>
+    
+<a href="?page=acp_add_new_product"><button class="btn-register">New Supplier Order</button></a>
 <hr>
 
 <div class="biggest_container">
@@ -33,29 +33,25 @@
       <h5>Order Placed:</h5><div>15/10/2018</div>
     </div>
 
-
-
 <div class="product_name">
-  <div>product picture</div>
-        <div>Name of the product</div>
-        </div>
+    <div>product picture</div>
+    <div>Name of the product</div>
+</div>
 
+<div class="eeeee">
+    <h5>Qty:</h5>
+    <div>85</div>
+</div>
 
+<div class="fffff">
+    <h5>Value:</h5>
+    <div>812.89</div>
+</div>
 
-        <div class="eeeee">
-          <h5>Qty:</h5>
-                <div>85</div>
-                </div>
-
-                <div class="fffff">
-                  <h5>Value:</h5>
-                        <div>£812.89</div>
-                        </div>
-
-                        <div class="gggggg">
-                          <h5>STATUS:</h5>
-                                <div>To be Dispatched</div>
-                                </div>
+<div class="gggggg">
+    <h5>STATUS:</h5>
+    <div>To be Dispatched</div>
+</div>
 
 </div>
 </div>
