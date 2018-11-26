@@ -1,20 +1,20 @@
 <?php
 
-if ((isset($_POST["email"])) && (isset($_POST["password"])))
+if ((isset($_POST["e_mail"])) && (isset($_POST["pswrd"])))
 {
-$hashed = password_hash($_POST["password"], PASSWORD_BCRYPT);
-$search = "SELECT * FROM users WHERE email = '".$_POST["email"]."'; ";
+$hashed = password_hash($_POST["pswrd"], PASSWORD_BCRYPT);
+$search = "SELECT * FROM users WHERE e_mail = '".$_POST["e_mail"]."'; ";
 $result = mysqli_query($mysqli, $search);
 if (mysqli_num_rows($result) == 1)
 { 
 $users = mysqli_fetch_assoc($result);
 
 $search = "UPDATE users SET
-    email = '".$_POST["email"]."',
-    password = '".$hashed."',
-    join_date = NOW(),
-    level = 'member',
-    WHERE user_id = ".$users["user_id"];
+    e_mail = '".$_POST["e_mail"]."',
+    pswrd = '".$hashed."',
+    acc_crt_dte = NOW(),
+    lvl = 'member',
+    WHERE usr_id = ".$users["usr_id"];
 
 mysqli_query($mysqli, $search);
 }
@@ -23,10 +23,10 @@ else {
     
 
 
-if (isset($_POST["first_name"]))
+if (isset($_POST["f_name"]))
 {
-	if (($_POST["first_name"] == "") || ($_POST["last_name"] == "") || ($_POST["email"] == "") || ($_POST["password"] == "") || ($_POST["psw_repeat"] == "") || ($_POST["dob"] == "") 
-        ||  ($_POST["house_no"] == "") ||  ($_POST["street"] == "") ||  ($_POST["city"] == "") ||  ($_POST["postcode"] == "") ||  ($_POST["phone"] == ""))
+	if (($_POST["f_name"] == "") || ($_POST["l_name"] == "") || ($_POST["e_mail"] == "") || ($_POST["pswrd"] == "") || ($_POST["psw_repeat"] == "") || ($_POST["dob"] == "") 
+        ||  ($_POST["adr_ln_1"] == "") ||  ($_POST["adr_ln_2"] == "") ||  ($_POST["pstcod"] == "") ||  ($_POST["phn_num"] == ""))
 	{
 
              print "<h4>Empty Fields!</h4>";
@@ -34,12 +34,12 @@ if (isset($_POST["first_name"]))
 	}
 	else
 	{
-		if ($_POST["password"] == $_POST["psw_repeat"])
+		if ($_POST["pswrd"] == $_POST["psw_repeat"])
 		{
                      
-$search = "INSERT INTO users (first_name, last_name, email, password, dob, join_date, level, house_no, street, city, postcode, phone)
+$search = "INSERT INTO users (f_name, l_name, e_mail, pswrd, dob, acc_crt_dte, lvl, adr_ln_1, adr_ln_2, pstcod, phn_num)
 VALUES
-('".$_POST["first_name"]."','".$_POST["last_name"]."','".$_POST["email"]."','".$hashed."','".$_POST["dob"]."', NOW(),'member', '".$_POST["house_no"]."','".$_POST["street"]."','".$_POST["city"]."','".$_POST["postcode"]."','".$_POST["phone"]."');";
+('".$_POST["f_name"]."','".$_POST["l_name"]."','".$_POST["e_mail"]."','".$hashed."','".$_POST["dob"]."', NOW(),'member', '".$_POST["adr_ln_1"]."','".$_POST["adr_ln_2"]."','".$_POST["pstcod"]."','".$_POST["phn_num"]."');";
 
 
 

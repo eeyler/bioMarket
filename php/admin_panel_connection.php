@@ -28,7 +28,7 @@
 </div>
 <div id="supplierOrders" class="tabcontent">
   <h3>Supplier Orders</h3>
-  <?php include_once 'html/acp_suppliers_orders.html'; ?>
+  <?php include_once 'acp_suppliers_orders.php'; ?>
 </div>
 <div id="customers" class="tabcontent">
   <h3>Customers</h3>

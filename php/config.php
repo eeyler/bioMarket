@@ -6,7 +6,7 @@ function is_logged_in()
 
 function get_user_level()
 {
-    $level = "visitor";
+    $level = "VISITOR";
     if (is_logged_in())
     {
         $level = $_SESSION["users"]["lvl"];      

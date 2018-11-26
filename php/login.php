@@ -2,7 +2,7 @@
 $userlevel = get_user_level();
 $page_title = 'BioMarket | LOGIN';
 
-if ($userlevel == "visitor")
+if ($userlevel == "VISITOR")
 {
 
 ?>
@@ -43,28 +43,23 @@ if ($userlevel == "visitor")
 
 if (!is_logged_in()){
     
-      $login_action = "?page=login";
+    $login_action = "?page=login";
       
 }
+
+if (is_logged_in()){ 
 $userlevel = get_user_level();
 
 
-if ($userlevel == "admin"){
-    if (is_logged_in()){
-
- 
-
+if ($userlevel == "ADMIN"){
     include "admin_panel_connection.php";
-
+    $login_action = "?page=home";
     }
-}
 
-if ($userlevel == "member"){
-    if (is_logged_in()){    
 
-      
+if ($userlevel == "MEMBER"){
     include "user_panel_connection.php";
-
+    $login_action = "?page=home"; 
     }
 
 }

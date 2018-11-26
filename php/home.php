@@ -2,13 +2,13 @@
 
 $userlevel = get_user_level();
 
-if ($userlevel == "visitor")
+if ($userlevel == "VISITOR")
 {
     // login form
     if (!is_logged_in()) {
        
         $login_action = "?page=home";
-        include "offers.php";
+        include "banner.php";
         include "categories.php";
     
     }
@@ -16,7 +16,7 @@ if ($userlevel == "visitor")
 }
 else
 {
-        include "offers.php";
+        include "banner.php";
         include "categories.php";
 }
 
