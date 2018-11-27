@@ -10,9 +10,7 @@ if ($userlevel == "VISITOR")
         $login_action = "?page=home";
         include "banner.php";
         include "categories.php";
-    
     }
-    
 }
 else
 {

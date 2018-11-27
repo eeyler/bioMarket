@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 23, 2018 at 03:38 PM
+-- Generation Time: Nov 27, 2018 at 01:06 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -30,31 +30,29 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(80) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `first_name` varchar(45) NOT NULL,
-  `last_name` varchar(45) NOT NULL,
+  `usr_id` int(11) NOT NULL AUTO_INCREMENT,
+  `f_name` varchar(45) NOT NULL,
+  `l_name` varchar(45) NOT NULL,
+  `e_mail` varchar(80) NOT NULL,
+  `phn_num` varchar(11) NOT NULL,
   `dob` date NOT NULL,
-  `phone` text NOT NULL,
-  `house_no` text NOT NULL,
-  `street` text NOT NULL,
-  `city` text NOT NULL,
-  `postcode` text NOT NULL,
-  `level` enum('admin','member') NOT NULL,
-  `join_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`user_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `adr_ln_1` varchar(60) NOT NULL,
+  `adr_ln_2` varchar(60) DEFAULT NULL,
+  `pstcod` varchar(10) NOT NULL,
+  `lvl` enum('MEMBER','ADMIN') NOT NULL DEFAULT 'MEMBER',
+  `pswrd` varchar(255) NOT NULL,
+  `acc_crt_dte` datetime NOT NULL,
+  PRIMARY KEY (`usr_id`),
+  UNIQUE KEY `e_mail` (`e_mail`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `email`, `password`, `first_name`, `last_name`, `dob`, `phone`, `house_no`, `street`, `city`, `postcode`, `level`, `join_date`) VALUES
-(1, 'admin@biomarket.co.uk', '$2y$10$nm9heArrNVNrm4QTPKBfFeqoHmi.8zaxCeRsF/6PnXSON4fDMpGz.', 'Admin', 'BioMarket', '2018-10-06', '20 8231 2468', 'University of West London', 'St. Mary Road, Eailing', 'London', 'W5 5RF', 'admin', '2018-11-23 14:18:56'),
-(2, 'edit.egri@yahoo.co.uk', '$2y$10$NeUoE2ta0ivz6oQacS2touhlsF/T3qImYddEuaiS5D0uKoS8CI3Jq', 'Edit', 'Egri', '2018-11-03', '123456789', '44', 'Staines Road', 'London', 'W5 5RF', 'member', '2018-11-23 14:21:22'),
-(3, 'eyler@freemail.hu', '$2y$10$dfYIBMNUJRNPNzOdWia2muXfHt9uyZ3ktfLzd1lk5y.xHSTpmMEWi', 'James', 'Brown', '2018-11-05', '20 8231 2468', '111', 'High', 'London', 'Uhdf5 6hf', 'member', '2018-11-23 14:24:35');
+INSERT INTO `users` (`usr_id`, `f_name`, `l_name`, `e_mail`, `phn_num`, `dob`, `adr_ln_1`, `adr_ln_2`, `pstcod`, `lvl`, `pswrd`, `acc_crt_dte`) VALUES
+(1, 'Admin', 'Biomarket', 'admin@biomarket.co.uk', '121214', '2018-11-12', 'UWL St Mary\'s Road, Ealing,', 'London', 'W5 5RF', 'ADMIN', '$2y$10$WkTX0vUDntU38HxTw8kwDO/qlSUov4ANQ32hZRfeqFAUXSO5lSzwO', '2018-11-26 00:02:54'),
+(2, 'Edit', 'Egri', 'edit.egri@yahoo.co.uk', '132435', '2018-11-05', '56 Staines Road', 'London', 'TW14 9HP', 'MEMBER', '$2y$10$nAzaXTXVvZMy0CM.yXiJ7.prueM/GMoFNhdzxIx5cke.44KamxjW.', '2018-11-26 00:25:40');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

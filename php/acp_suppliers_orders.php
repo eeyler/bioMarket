@@ -9,7 +9,7 @@
 
 <body>
     
-<a href="?page=acp_add_new_product"><button class="btn-register">New Supplier Order</button></a>
+<a href="#"><button class="btn-register">New Supplier Order</button></a>
 <hr>
 
 <div class="biggest_container">
