@@ -1,9 +1,16 @@
+<?php
+
+$page_title = 'BioMarket | CUSTOMERS ORDERS | NEW PRODUCT';
+
+include_once "admin_panel_connection.php"; 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-<title> Biomarket login</title>
+<title>Customers Orders</title>
 <link rel="stylesheet" type="text/css" href="?????????.css">
 </head>
 
@@ -13,7 +20,7 @@
 <div class="biggest_container">
   <div class="smaller_container">
 
-<div class="aaaaaaa">
+<div class="customer_orders">
         <h5>Order ID:</h5><div>xxx</div>
 </div>
 <div class="aaaaaaa">
@@ -30,7 +37,7 @@
       <h5>Delivery Date:</h5><div>15/10/2018</div>
 </div>
 
-<div class="product_name">
+<div class="product">
     <div>product picture</div>
     <div>Name of the product</div>
 </div>

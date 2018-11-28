@@ -1,0 +1,66 @@
+.side{
+   float: left;
+   width: 50%;
+   padding: 10px;
+   vertical-align: middle;
+   text-align: left;
+}
+.right {
+    width: 300px;
+}
+
+
+.acp-add-prod-wrap {
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid silver;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 10px;   
+  
+}
+
+.acp-add-prod-wrap input, .acp-add-prod-wrap textarea{
+    width: 400px;
+    height: 35px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    padding: 5px;
+
+}
+.acp-add-prod-wrap form {
+     display: block;
+     float: left;
+}
+
+.acp-add-prod-wrap textarea { 
+
+    height: 300px;
+
+}
+.product { text-align: middle; }
+.acp-add-prod-wrap:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Fake image, just for this example */
+.fakeimg {
+    max-width: 304px;
+    height: 304px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border: 2px solid gray;
+}
+.fakeimg img{ 
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+}

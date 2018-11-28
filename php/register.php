@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="css/stylelogin.css">
 </head>
 <?php
 $userlevel = get_user_level();
@@ -33,9 +35,12 @@ if (!is_logged_in())
     else {     
         $login_action = "?page=register";
     ?>
-<body>
-<form action="?page=registration" method="post">
-  <div class="container">
+
+<form action="?page=register" method="post">
+  <div class="form-wrap">
+    <div class="logo">
+        <a href="#"><img id='logo' src="img/logo_colour_toggle.png" /></a>
+    </div>      
     <h1>Register</h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
@@ -61,11 +66,11 @@ if (!is_logged_in())
     <input type="password" placeholder="Repeat Password" name="psw_repeat" required>
     <hr>
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-    <button type="submit" class="btn-register">Register</button>
-  </div>
-  <div class="container signin">
+    <button type="submit" class="btn-register">REGISTER</button>
+
       <p>Already have an account?</p>
-      <a href="?page=login"><div class="btn-login">Login</div></a>
+      <a href="?page=login"><div class="btn-login">LOGIN</div></a>
+
   </div>
 </form>
 </body>
