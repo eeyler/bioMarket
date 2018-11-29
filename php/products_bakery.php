@@ -18,14 +18,17 @@
 ?> 
         <div class="col-sm-3" >
           <div class="product-box category-products">
-            <a href="?page=products_bakery"> 
+            <a href="?page=product_page"> 
               <img alt="product examples" src="<?php echo $row["prod_img"]?>">
               <h5><?php echo $row["prod_name"]?></h5>
               <p class="price">£<?php echo $row["price"]?> / each</p>
             </a>
-                <a target="_blank" href="">
-                <p><button>Add to Cart</button></p>
-                </a>
+<?php   
+    print '<div class="btn-details">
+         
+    <a href="?page=acp_stock_details&prod_id=' . $row["prod_id"] . '&action=add_to_cart">Add to Cart</a></div> ';  
+      
+?>  
           </div>
         </div>
        <!-- .col-sm-4 col-sm-12 -->
