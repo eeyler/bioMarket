@@ -7,6 +7,7 @@
 }
 .right {
     width: 300px;
+   
 }
 
 
@@ -52,12 +53,17 @@
 
 
 /* Fake image, just for this example */
-.fakeimg {
+.fakeimg, .img input{
     max-width: 304px;
     height: 304px;
     border-radius: 10px;
     margin: 20px 0;
     border: 2px solid gray;
+}
+.img input{
+    max-width: 200px;
+    height: 40px;
+    margin: 5px;
 }
 .fakeimg img{ 
     width: 300px;

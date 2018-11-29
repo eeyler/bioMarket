@@ -1,5 +1,5 @@
 <head>
-  <link rel="stylesheet" type="text/css" href="css/products.css">
+  <link rel="stylesheet" type="text/css" href="css/products_no.css">
  </head>
 <body>
  <!-- === category === -->
@@ -7,7 +7,8 @@
     <div class="container-main">
       <!-- .section-title -->
  <?php
-    $search = "SELECT * FROM products WHERE cat_id = 'VEGETABLES' ORDER BY prod_id ASC";
+    $page_title = 'BioMarket | Vegetables';
+    $search = "SELECT * FROM products WHERE cat_id = '3' ORDER BY prod_id ASC";
         
     $result = mysqli_query($mysqli, $search);    
     

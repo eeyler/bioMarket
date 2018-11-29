@@ -18,6 +18,8 @@ function login($email, $password)
 {
 // $hashed = password_hash($_POST["password"], PASSWORD_BCRYPT); 
 $mysqli = mysqli_connect("localhost", "root", "", "biomarket");
+    
+
 $connect= false;    
 $query = mysqli_query($mysqli, "SELECT * FROM users WHERE e_mail='".mysqli_escape_string ($mysqli, $email)."' ");
  
