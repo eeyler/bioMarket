@@ -34,20 +34,25 @@ if ($userlevel == "VISITOR")
 </html>
 <?php
 }
+$userlevel = get_user_level();
 if (!is_logged_in()){
+   
     $login_action = "?page=login";
+    
 }
 if (is_logged_in()){ 
-$userlevel = get_user_level();
+
 
 if ($userlevel == "ADMIN"){
     
-    include "admin_panel_connection.php";
-    $login_action = "?page=home";
-    }
+    $login_action = "?page=login";
+    include "acp_stock.php";
+}
 
 if ($userlevel == "MEMBER"){
-    include "user_panel_connection.php";
-    $login_action = "?page=home"; 
+    
+    $login_action = "?page=login"; 
+    include 'cart.php';
+
     }
 }

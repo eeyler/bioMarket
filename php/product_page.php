@@ -10,8 +10,8 @@
 $page_title = 'BioMarket | Product'; 
 include "admin_panel_connection.php"; 
 
-if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "add_to_cart") {
-    
+
+ 
     $search = "SELECT * FROM products, suppliers, category WHERE products.cat_id = category.cat_id AND suppliers.sup_id = products.sup_id AND products.prod_id = ".(int)$_REQUEST["prod_id"];
     $result = mysqli_query($mysqli, $search);
 
@@ -19,7 +19,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "add_to_cart") {
     {   
 
 ?>
-<form action="?page=acp_product_update" method="post" enctype="multipart/form-data">    
+<form action="?page=cart" method="post" enctype="multipart/form-data">    
 <div class="acp-add-prod-wrap">
   
   <div class="side left">   
@@ -51,26 +51,28 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "add_to_cart") {
   <div class="product">
     <p>Available: <?php echo $row["sto_qty"]?></p>
   </div>
-     
+   
     <div class="product">
-        <p>Quantity: </p><input type="text" placeholder="1" name="sto_qty" >
+        <p>Quantity: </p><input type="text" placeholder="Enter Required Quantity" name="sto_qty" >
   </div>   
-     
+    
      
     <!-- Hidden Input area to call in the value for the prod_id primary key -->     
-    <input name="prod_id" type="hidden" value="<?php echo $row["prod_id"]?>" >     
-    <input name="confirm" type="submit" value="Add to Cart"> 
+    <input name="prod_id" type="hidden" value="<?php echo $row["prod_id"]?>" >  
+    <button type="submit" name="submit" class="btn-login">Add to Cart</button>
+  <!--    <input name="add_to_cart" type="submit" value="Add to Cart">  -->
   </div>  
     
-</form>    
+ 
 </div>
-  
+</form>    
 
 
  </body>
 </html>
 <?php
-    }
-
 }
+
+
+
 

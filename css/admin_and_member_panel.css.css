@@ -1,5 +1,5 @@
 
-.admin_panel {
+.panel {
     overflow: hidden;
 /*    border: 1px solid #ccc;*/
     border-radius: 10px;
@@ -7,7 +7,7 @@
     box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.08);
 }
 
-.admin_panel a {
+.panel a {
     background-color: inherit;
     float: left;
     border: none;
@@ -22,37 +22,37 @@
     color: black;
 }
 
-.admin_panel a:hover {
+.panel a:hover {
   background-color: #ddd;
 
 }
 
-.active {
+.active-panel {
  
   color: white;
-  background-color: yellow;
+
 }
 
-.admin_panel .icon {
+.panel .icon-burger {
   display: none;
 }
 
 @media screen and (max-width: 600px) {
-  .admin_panel a:not(:first-child) {display: none;}
-  .admin_panel a.icon {
+  .panel a:not(:first-child) {display: none;}
+  .panel a.icon-burger {
     float: right;
     display: block;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .admin_panel.responsive {position: relative;}
-  .admin_panel.responsive .icon {
+  .panel.responsive {position: relative;}
+  .panel.responsive .icon-burger {
     position: absolute;
     right: 0;
     top: 0;
   }
-  .admin_panel.responsive a {
+  .panel.responsive a {
     float: none;
     display: block;
     text-align: left;

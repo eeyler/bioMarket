@@ -1,14 +1,17 @@
 <?php
 $userlevel = get_user_level();
-$page_title = 'BioMarket | PROFILE';
+$page_title = 'BioMarket | Profile';
 if ($userlevel == "ADMIN")
 {
+   $login_action = "?page=profile";
 
-    include "admin_panel_connection.php";
+   include "acp_stock.php";
     
 }
 if ($userlevel == "MEMBER")
-{
-    include "user_panel_connection.php";
+{  
+   $login_action = "?page=profile";
+
+   include "user_details.php";
     
 }

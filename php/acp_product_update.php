@@ -25,10 +25,10 @@ if ((isset($_POST["prod_id"])) || (isset($_POST["cat_id"])) || (isset($_POST["su
   </div>
 
   <div class="side right">
-    <input type="text" name="prod_name" value="<?php echo $row["prod_name"]?>">
+    <input type="text" name="prod_name" value="<?php echo $row["prod_name"]?>" >
   <div class="product">
     <p>Product Category: <?php echo $row["cat_name"]?></p>
-    <select name="cat_id" >
+    <select name="cat_id">
         <option value="<?php echo $row["cat_id"]?>">Choose Category</option> 
         <option value="1">Bakery</option>  
         <option value="2">Drink</option>       
@@ -39,7 +39,7 @@ if ((isset($_POST["prod_id"])) || (isset($_POST["cat_id"])) || (isset($_POST["su
     
     
   <div class="product">
-    <p>Price:</p><input type="text" name="price" value="<?php echo $row["price"]?>">
+    <p>Price:</p><input type="text" name="price" value="<?php echo $row["price"]?>" >
   </div>
   <div class="product">
     <p>Supplier: <?php echo $row["sup_name"]?></p>
@@ -55,17 +55,12 @@ if ((isset($_POST["prod_id"])) || (isset($_POST["cat_id"])) || (isset($_POST["su
     
   <div class="product">
     <p>Description of the Product:</p>
-    <textarea  name="prod_dsc" ><?php echo $row["prod_dsc"]?></textarea>
+    <textarea  name="prod_dsc" maxlength="255" ><?php echo $row["prod_dsc"]?></textarea>
   </div>
   <div class="product">
-    <p>Quantity:</p><input type="text" name="sto_qty" value="<?php echo $row["sto_qty"]?>">
+    <p>Quantity:</p><input type="text" name="sto_qty" value="<?php echo $row["sto_qty"]?>" >
   </div>
-<?php   
- //   print '<div class="btn-details">
-         
-//    <a href="?page=acp_stock_details&prod_id=' . $row["prod_id"] . '&action=conf_details">Confirm Product Details</a></div> ';  
-      
-?>      
+    
   <!-- Hidden Input area to call in the value for the prod_id primary key   -->
   <input name="prod_id" type="hidden" value="<?php echo $row["prod_id"]; ?>" > 
   <input name="confirm" type="submit" value="Confirm Product Details"> 
@@ -76,7 +71,7 @@ if ((isset($_POST["prod_id"])) || (isset($_POST["cat_id"])) || (isset($_POST["su
 
     
 </div>
-    
+</form>    
 <?php 
     }
 

@@ -14,19 +14,19 @@
 <div class="acp-add-prod-wrap">
   
   <div class="side left">   
-     <div class="fakeimg">Product Image</div>   
+      <div class="fakeimg"><p>IMAGE OF PRODUCT</p></div>   
     
-     <div class="img"><input type="file" name="prod_img"></div> 
+     <div class="img"><input type="file" name="prod_img" required></div> 
   </div>
      
  <div class="side right">
   <div class="product">
-    <input type="text" placeholder="Enter product name" name="prod_name" >
+    <input type="text" placeholder="Enter product name" name="prod_name" required>
   </div>    
   <div class="product">
     <p>Product Category:</p>
-    <select name="cat_id">
-        <option value="0">Choose Category</option> 
+    <select name="cat_id" required aria-required="true">
+        <option value="">Choose Category</option> 
         <option value="1">Bakery</option>  
         <option value="2">Drink</option>       
         <option value="3">Vegetables</option>
@@ -34,12 +34,12 @@
     </select>
   </div>     
   <div class="product">
-    <p>Price:</p><input type="text" placeholder="Enter product price" name="price" >
+    <p>Price:</p><input type="number" placeholder="Enter product price" name="price" required>
   </div>
   <div class="product">
     <p>Supplier: </p>
-    <select name="sup_id">
-        <option value="0">Choose Supplier</option>  
+    <select name="sup_id" required aria-required="true">
+        <option value="" >Choose Supplier</option>  
         <option value="1">Real Bakery</option>  
         <option value="2">Organic Drink Corp</option>       
         <option value="3">Fresh Veggie</option>
@@ -49,10 +49,10 @@
      
   <div class="product">
     <p>Description of the Product:</p>
-    <textarea  placeholder="Enter Product Description" name="prod_dsc" ></textarea>
+    <textarea  placeholder="Enter Product Description" name="prod_dsc" maxlength="255" required></textarea>
   </div>
   <div class="product">
-    <p>Quantity:</p><input type="text" placeholder="Enter stock quantity" name="sto_qty" >
+    <p>Quantity:</p><input type="number" placeholder="Enter stock quantity" name="sto_qty" required>
   </div>
   <button type="submit" name="submit" class="btn-login">Add Product To Stock</button>
   </div>  
