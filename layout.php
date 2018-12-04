@@ -23,9 +23,13 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
   <!-- End -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">       
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  
+
+  
 </head>
     <body class="<?php echo $page ?>">
        <header>
