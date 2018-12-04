@@ -10,27 +10,35 @@
    vertical-align: middle;
    text-align: left;
 }
-.two { width: 45%; }
-
-.three { width: 25%; }       
+.column input {background-color: #fff; text-align: right; width: 40px;}
+.two { width: 40%; }
+.two-stock {width: 45%;}
+.three { width: 23%; }       
 .unit{
-    width: 10%;
+    width: 6%;
     text-align: right;
 }
-.btn-add, .btn-details, .btn-checkout {
+.unit2{    
+    width: 12%;
+    text-align: right;
+}
+.btn-add, .btn-details, .btn-checkout,
+.btn-cart{
     text-align: center;
     padding : 5px;
     width: 200px;
     height: 30px;
     background-color: grey;
-    color: #fff;
-    border-radius:3px;
-    border:0;
+ /*   color: #fff; */
+    border-radius: 3px;
+    border: 0;
     font-size: 16px;
 
 }
+.btn-cart, .btn-details{ width: 100px; float: left; margin: 0 12px; }
 
-.btn-add:hover, .btn-details:hover, btn-checkout:hover  {
+.btn-add:hover, .btn-details:hover, .btn-checkout:hover,
+.btn-cart:hover {
     background-color: gray;
     border-radius: 10px;
     font-size: 18px;

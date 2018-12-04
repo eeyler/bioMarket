@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 01, 2018 at 07:40 AM
+-- Generation Time: Dec 04, 2018 at 07:31 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -30,20 +30,24 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `cart_tmp`;
 CREATE TABLE IF NOT EXISTS `cart_tmp` (
-  `crt_id` int(11) NOT NULL,
   `crt_ln` int(11) NOT NULL AUTO_INCREMENT,
+  `crt_id` int(11) NOT NULL,
   `prod_id` int(11) NOT NULL,
   `ord_qty` int(8) NOT NULL,
   PRIMARY KEY (`crt_ln`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cart_tmp`
 --
 
-INSERT INTO `cart_tmp` (`crt_id`, `crt_ln`, `prod_id`, `ord_qty`) VALUES
-(2, 2, 2, 2),
-(2, 3, 3, 4);
+INSERT INTO `cart_tmp` (`crt_ln`, `crt_id`, `prod_id`, `ord_qty`) VALUES
+(17, 7, 13, 2),
+(12, 7, 5, 2),
+(18, 7, 16, 2),
+(15, 2, 5, 4),
+(16, 2, 6, 2),
+(19, 2, 2, 10);
 
 -- --------------------------------------------------------
 
@@ -85,6 +89,14 @@ CREATE TABLE IF NOT EXISTS `customer_order` (
   KEY `usr_id` (`usr_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `customer_order`
+--
+
+INSERT INTO `customer_order` (`ord_num`, `usr_id`, `ord_dte`, `sts`) VALUES
+(1, 7, '2018-12-03', 'ORDERED'),
+(2, 7, '2018-12-10', 'ORDERED');
+
 -- --------------------------------------------------------
 
 --
@@ -101,6 +113,16 @@ CREATE TABLE IF NOT EXISTS `customer_order_line` (
   KEY `ord_num` (`ord_num`),
   KEY `prod_id` (`prod_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `customer_order_line`
+--
+
+INSERT INTO `customer_order_line` (`ord_num`, `ord_ln`, `prod_id`, `ord_qty`) VALUES
+(1, 1, 2, 22),
+(1, 2, 3, 33),
+(1, 3, 5, 11),
+(1, 4, 7, 23);
 
 -- --------------------------------------------------------
 
@@ -128,23 +150,23 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`prod_id`, `prod_name`, `price`, `sup_id`, `prod_dsc`, `prod_img`, `cat_id`, `sto_qty`) VALUES
-(1, 'Pomegrade Juice', '1.25', 2, 'Really nice product description for Pomegrade Juice', 'img/uploads/5bfc8efd684495.54781090.jpg', 2, 56),
-(2, 'Kale Juice', '2.03', 2, 'Really nice product description for Kale Juice', 'img/uploads/5bfc8ee02d5a58.55705998.jpg', 2, 21),
-(3, 'Carrot Juice', '0.86', 2, 'Really nice product description for Carrot Juice', 'img/uploads/5bfc8ebcb60fa4.65547830.jpg', 2, 98),
-(4, 'Broccoli and Ricotta Pie', '1.50', 1, 'Really nice product description for Broccoli and Ricotta Pie', 'img/uploads/5bfc8dc80e44b7.38413046.jpg', 1, 121),
-(5, 'Bread with Raisins', '2.62', 1, 'Really nice product description for Bread with Raisins', 'img/uploads/5bfc8b69202624.26787220.jpg', 1, 32),
-(6, 'Coconut Bars', '3.58', 1, 'Really nice product description for Coconut Bars', 'img/uploads/5bfc8dea460e81.62966147.jpg', 1, 0),
-(7, 'French Baguette', '2.14', 1, 'Really nice product description for French Baguette', 'img/uploads/5bfc8e819496a5.59336623.jpg', 1, 12),
+(1, 'Pomegrade Juice', '1.25', 2, 'Really nice product description for Pomegrade Juice', 'img/uploads/5bfc8efd684495.54781090.jpg', 2, 23),
+(2, 'Kale Juice', '2.03', 2, 'Really nice product description for Kale Juice', 'img/uploads/5bfc8ee02d5a58.55705998.jpg', 2, 10),
+(3, 'Carrot Juice', '0.86', 2, 'Really nice product description for Carrot Juice', 'img/uploads/5bfc8ebcb60fa4.65547830.jpg', 2, 235),
+(4, 'Broccoli and Ricotta Pie', '1.25', 1, 'Really nice product description for Broccoli and Ricotta Pie', 'img/uploads/5bfc8dc80e44b7.38413046.jpg', 1, 32),
+(5, 'Bread with Raisins', '2.62', 1, 'Really nice product description for Bread with Raisins', 'img/uploads/5bfc8b69202624.26787220.jpg', 1, 14),
+(6, 'Coconut Bars', '3.58', 1, 'Really nice product description for Coconut Bars', 'img/uploads/5bfc8dea460e81.62966147.jpg', 1, 13),
+(7, 'French Baguette', '2.14', 1, 'Really nice product description for French Baguette', 'img/uploads/5bfc8e819496a5.59336623.jpg', 1, 234),
 (8, 'Yogurt', '0.50', 4, 'Really nice product description for Yogurt', 'img/uploads/5bfc93e69e7ae7.06241521.jpg', 4, 43),
-(9, 'Cottage Cheese', '4.15', 4, 'Really nice product description for Cottage Cheese', 'img/uploads/5bfc944b347bb6.96054639.jpg', 4, 34),
-(10, 'Coconut Milk', '3.45', 4, 'Really nice product description for Coconut Milk', 'img/uploads/5bfc94c763b756.98268375.jpg', 4, 0),
-(11, 'Avocado', '2.78', 3, 'Really nice product description for Avocado', 'img/uploads/5bfc9547e90978.70031156.jpg', 3, 59),
-(12, 'Peas', '5.70', 3, 'Really nice product description for Peas', 'img/uploads/5bfc95aa96d079.50991718.jpg', 3, 86),
-(13, 'Beetroots', '4.02', 3, 'Really nice product description for Beetroots', 'img/uploads/5bfc961f9de346.08918563.jpg', 3, 25),
-(14, 'Tomatoes', '1.52', 3, 'Really nice product description for Tomatoes', 'img/uploads/5bfc96d55d6458.60612011.jpg', 3, 0),
+(9, 'Cottage Cheese', '4.15', 4, 'Really nice product description for Cottage Cheese', 'img/uploads/5bfc944b347bb6.96054639.jpg', 4, 0),
+(10, 'Coconut Milk', '3.45', 4, 'Really nice product description for Coconut Milk', 'img/uploads/5bfc94c763b756.98268375.jpg', 4, 44),
+(11, 'Avocado', '2.78', 3, 'Really nice product description for Avocado', 'img/uploads/5bfc9547e90978.70031156.jpg', 3, 435),
+(12, 'Peas', '5.70', 3, 'Really nice product description for Peas', 'img/uploads/5bfc95aa96d079.50991718.jpg', 3, 45),
+(13, 'Beetroots', '4.02', 3, 'Really nice product description for Beetroots', 'img/uploads/5bfc961f9de346.08918563.jpg', 3, 15),
+(14, 'Tomatoes', '1.52', 3, 'Really nice product description for Tomatoes', 'img/uploads/5bfc96d55d6458.60612011.jpg', 3, 34),
 (15, 'Lime and Apple Juice', '3.56', 2, 'Really nice product description for Lime and Apple Juice', 'img/uploads/5bfca66b203680.63516952.jpg', 2, 120),
-(16, 'Quark Breakfast Selection', '10.10', 4, 'Really nice product description for Quark Breakfast Selection', 'img/uploads/5bfca7094f5864.47772269.jpg', 4, 13),
-(17, 'Onions', '1.25', 3, 'Really nice product description for Onions', 'img/uploads/5bfca533eb0f58.64750428.jpg', 3, 76);
+(16, 'Quark Breakfast Selection', '10.10', 4, 'Really nice product description for Quark Breakfast Selection', 'img/uploads/5bfca7094f5864.47772269.jpg', 4, 11),
+(17, 'Onions', '1.25', 3, 'Really nice product description for Onions', 'img/uploads/5bfca533eb0f58.64750428.jpg', 3, 73);
 
 -- --------------------------------------------------------
 
@@ -240,15 +262,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `acc_crt_dte` datetime NOT NULL,
   PRIMARY KEY (`usr_id`),
   UNIQUE KEY `e_mail` (`e_mail`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`usr_id`, `f_name`, `l_name`, `e_mail`, `phn_num`, `dob`, `adr_ln_1`, `adr_ln_2`, `pstcod`, `lvl`, `pswrd`, `acc_crt_dte`) VALUES
-(1, 'Admin', 'Biomarket', 'admin@biomarket.co.uk', '1234568', '2018-12-01', 'UWL', 'London', 'W5 5RF', 'ADMIN', '$2y$10$6cCkjGqqf2QyQmxP/w.aEuVHjBgMf3iIBM0Gvo7fkyl.rfdHAaXHS', '2018-12-01 07:31:25'),
-(2, 'Edit', 'Egri', 'edit.egri@yahoo.co.uk', '132435', '2018-11-05', '56 Staines Road', 'London', 'TW14 9HP', 'MEMBER', '$2y$10$nAzaXTXVvZMy0CM.yXiJ7.prueM/GMoFNhdzxIx5cke.44KamxjW.', '2018-11-26 00:25:40');
+(1, 'Admin', 'Biomarket', 'admin@biomarket.co.uk', '1234568', '2018-12-11', 'UWL', 'London', 'W5 5RF', 'ADMIN', '$2y$10$6cCkjGqqf2QyQmxP/w.aEuVHjBgMf3iIBM0Gvo7fkyl.rfdHAaXHS', '2018-12-01 07:31:25'),
+(2, 'Edit', 'Egri', 'edit.egri@yahoo.co.uk', '132435', '2018-11-05', '56 Staines Road', 'London', 'TW14 9HP', 'MEMBER', '$2y$10$nAzaXTXVvZMy0CM.yXiJ7.prueM/GMoFNhdzxIx5cke.44KamxjW.', '2018-11-26 00:25:40'),
+(3, 'E', 'E', 'egri.editerika@gmail.com', '242', '2018-12-04', 'cvnc', 'cvnc', 'cnvc', 'MEMBER', '$2y$10$bWP9ae.ZgmWtWKXtkyhJuuzXHytEENL8we8WHOx9UccRtoOUiTtpy', '2018-12-01 15:44:20'),
+(4, 'Dominykas', 'Genys', 'dominykasgenysmail@gmail.com', '07401528222', '2018-11-06', '777', 'london', 'tw3 3ne', 'MEMBER', '$2y$10$lXc.2Ep53EIRVOvwc4YKp.TE8039.UE8iGYgF/3uFB9ph.3TIBzSS', '2018-12-01 16:01:44'),
+(5, 'AdminTester', 'Tester', '21353578@student.uwl.ac.uk', '07401528456', '2018-09-03', '12 kalo st.', 'london', 'W5 5RF', 'ADMIN', '$2y$10$LsFHtGnFwz8WnYfvkI8TTe0T7Bq99bt7MpadXcXU1H3aOhXU1qh3W', '2018-12-01 16:15:24');
 
 --
 -- Constraints for dumped tables

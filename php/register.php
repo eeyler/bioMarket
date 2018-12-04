@@ -8,10 +8,10 @@
 </head>
 <?php
 $userlevel = get_user_level();
-$page_title = 'BioMarket | REGISTER';
+$page_title = 'BioMarket | Register';
 if ($userlevel == "MEMBER")
 {
-    print "<br><h2>You are already registered!</h2>";
+    print "<br><h4>You are already registered!</h4>";
 }
 else {
     include "register_me.php";
@@ -24,22 +24,25 @@ if (!is_logged_in())
         {
                 if ($_POST["pswrd"] != $_POST["psw_repeat"])
 		{
-                print "<br><h2>The passwords are not identical!</h2>"; 
+                print "<br><h4>The passwords are not identical!</h4>"; 
                 }
                 else{
-                    print "<br><h2>Congratulations on Joining the Bio Market!</h2>"; 
+                    print "<br><h4>Congratulations on Joining the Bio Market!</h4>"; 
+         
                     include "banner.php";
                     include "categories.php";
+                   
                 }
         }
-    else {     
-        $login_action = "?page=register";
+    else {
+       
+       
     ?>
-
+    
 <form action="?page=register" method="post">
   <div class="form-wrap">
     <div class="logo">
-        <a href="#"><img id='logo' src="img/logo_colour_toggle.png" /></a>
+        <a href="?page=home"><img id='logo' src="img/logo_colour_toggle.png" /></a>
     </div>      
     <h1>Register</h1>
     <p>Please fill in this form to create an account.</p>
@@ -64,12 +67,13 @@ if (!is_logged_in())
     <input type="password" placeholder="Enter Password" name="pswrd" required>
     <label for="psw_repeat"><b>Repeat Password</b></label>
     <input type="password" placeholder="Repeat Password" name="psw_repeat" required>
-    <hr>
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
     <button type="submit" class="btn-register">REGISTER</button>
-
-      <p>Already have an account?</p>
-      <a href="?page=login"><div class="btn-login">LOGIN</div></a>
+    
+    <hr>
+    
+    <p>Already have an account?</p>
+    <a href="?page=login"><div class="btn-login">LOGIN</div></a>
 
   </div>
 </form>
@@ -80,7 +84,7 @@ if (!is_logged_in())
 
  
  
-}
+}   
 
 
 

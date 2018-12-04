@@ -10,7 +10,7 @@
       <!-- .section-title -->
       <div class="row">
         <a href="?page=products_bakery">
-        <div class="col-sm-3" >
+        <div class="col-lg-3 col-sm-6 col-xs-12" >
           <div class="category-box category-bakery">
             <h3>BAKERY</h3>
           </div>
@@ -18,7 +18,7 @@
         </a>
         <!-- .col-sm-4 col-sm-12 -->
         <a href="?page=products_drinks">
-        <div class="col-sm-3">
+        <div class="col-lg-3 col-sm-6 col-xs-12">
           <div class="category-box category-drinks">  
             <h3>DRINKS</h3>
           </div>
@@ -26,7 +26,7 @@
         </a>    
         <!-- .col-sm-4 -->
         <a href="?page=products_vegetables">
-        <div class="col-sm-3">
+        <div class="col-lg-3 col-sm-6 col-xs-12">
           <div class="category-box category-vegetables">
             <h3>VEGGIES</h3>
           </div>
@@ -34,7 +34,7 @@
         </a>
         <!-- .col-sm-4 -->
         <a href="?page=products_dairy">
-        <div class="col-sm-3">
+        <div class="col-lg-3 col-sm-6 col-xs-12">
           <div class="category-box category-dairy">
             <h3>DAIRY</h3>
           </div>

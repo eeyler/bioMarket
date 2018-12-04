@@ -25,10 +25,10 @@ $page_title = 'BioMarket | Product Card';
     {
       if (!$row["sto_qty"] <= 0) {
  
-        if ($userlevel == "VISITOR")
+        if ($userlevel == "MEMBER")
         {
  ?>   
-         
+        
         <div class="container">
             <!-- Product card-->
             <div class="column">
@@ -38,7 +38,46 @@ $page_title = 'BioMarket | Product Card';
                     <!-- Thumbnail-->
                     <div class="thumbnail">
                         <div class="discount">
-                            <div class="deal">-15%</div>
+                            <div class="deal">&pound<?php echo $row["price"]?></div>
+                        </div><img alt="product example" src="<?php echo $row["prod_img"]?>">
+                    </div>
+                
+                    <!-- Post Content-->
+                    <div class="post-content">
+                        <div class="category">
+<?php   
+                    print '<div class="toCard"><a href="?page=product_page&prod_id=' . $row["prod_id"] . '&action=add_to_basket">Add to Basket</a>
+                    </div> ';  
+?>      
+                        </div>
+                        <h1 class="title"><?php echo $row["prod_name"]?></h1>
+                        <h2 class="sub_title">Fresh and tasty</h2>
+                        <p class="description"><?php echo $row["prod_dsc"]?>
+                        <div class="post-meta">
+                           
+                            <span class="showStock"><i class="fa fa-check-circle"></i>
+                           <a>Qty: <?php echo $row["sto_qty"]?></a></span><a href="#" title="Love it" class="btn btn-counter" data-count="0"><span>&#x2764;</span></a></div>
+                    </div>
+                </div>
+            </div>
+       </div>            
+        
+    
+<?php        
+      }
+      else { 
+  
+?>           
+       <div class="container">
+            <!-- Product card-->
+            <div class="column">
+              
+                <!-- Post-->
+                <div class="post-module">
+                    <!-- Thumbnail-->
+                    <div class="thumbnail">
+                        <div class="discount">
+                            <div class="deal">&pound<?php echo $row["price"]?></div>
                         </div><img alt="product example" src="<?php echo $row["prod_img"]?>">
                     </div>
                     <!-- Post Content-->
@@ -55,51 +94,7 @@ $page_title = 'BioMarket | Product Card';
                 </div>
             </div>
        </div>  
-        
-       
-<?php        
-      }
-      else {  
-      
  
-?>           
-        
-        
-        <div class="container">
-            <!-- Product card-->
-            <div class="column">
-              
-                <!-- Post-->
-                <div class="post-module">
-                    <!-- Thumbnail-->
-                    <div class="thumbnail">
-                        <div class="discount">
-                            <div class="deal">-15%</div>
-                        </div><img alt="product example" src="<?php echo $row["prod_img"]?>">
-                    </div>
-                    <!-- Post Content-->
-                    <div class="post-content">
-                        <div class="category">
-<?php   
-                    print '<div class="toCard"><a href="?page=product_page&prod_id=' . $row["prod_id"] . '&action=add_to_basket">Add to Basket</a>
-                       
-         
-                    </div> ';  
-      
-?>      
-                 
-                        </div>
-                        <h1 class="title"><?php echo $row["prod_name"]?></h1>
-                        <h2 class="sub_title">Fresh and tasty</h2>
-                        <p class="description"><?php echo $row["prod_dsc"]?>
-                        <div class="post-meta">
-                           
-                            <span class="showStock"><i class="fa fa-check-circle"></i>
-                           <a>Qty: <?php echo $row["sto_qty"]?></a></span><a href="#" title="Love it" class="btn btn-counter" data-count="0"><span>&#x2764;</span></a></div>
-                    </div>
-                </div>
-            </div>
-       </div>   
 <?php        
       }
    
@@ -107,8 +102,8 @@ $page_title = 'BioMarket | Product Card';
    } 
 }   
 ?>
-       </div>
-   
+      
+     </div>   
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="scripts/likes.js"></script>
         <script src="scripts/product-card.js"></script>

@@ -6,16 +6,39 @@
 </head>
 <body>
 <?php
-       $page_title = 'BioMarket | Your Cart';
-        include_once "user_panel_connection.php"; 
+      $page_title = 'BioMarket | Your Cart';
+      include_once "user_panel_connection.php"; 
 ?>
 <div class="container-cart">
       <h2>Your Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i></span></h2>
 <?php
-
+ // Delete Product from the cart    
+if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "remove") {
+    
+    // Update Product quantity with the deleted quantity        
+    $search = "SELECT * FROM cart_tmp WHERE crt_id =  ".(int)$_SESSION["users"]["usr_id"]."";
+    $result = mysqli_query($mysqli, $search); 
+    $temp_row1 = mysqli_fetch_assoc($result);  
+    
+    $search = "SELECT * FROM cart_tmp, products WHERE cart_tmp.prod_id = products.prod_id ";
+    $result = mysqli_query($mysqli, $search); 
+    $temp_row2 = mysqli_fetch_assoc($result);    
+    
+    $new_qty = $temp_row2["sto_qty"] + $temp_row1["ord_qty"];
+    $search = "UPDATE products SET sto_qty = $new_qty WHERE prod_id =   " . $temp_row1["prod_id"] . " ";
+    mysqli_query($mysqli, $search);    
+    
+    
+    $search = "DELETE FROM cart_tmp WHERE prod_id = ".(int)$_REQUEST["prod_id"]." AND crt_id =  ".(int)$_SESSION["users"]["usr_id"]." ";
+    mysqli_query($mysqli, $search);
+    
+     
+}
 if (isset($_POST["prod_id"]))
     {
-  
+ $search = "SELECT * FROM cart_tmp WHERE prod_id = '".$_POST["prod_id"]."' AND crt_id =  ".(int)$_SESSION["users"]["usr_id"]."";
+ $result = mysqli_query($mysqli, $search); 
+  $row = mysqli_fetch_assoc($result); 
  $search = "SELECT * FROM products WHERE prod_id = '".$_POST["prod_id"]."' ";
  $result = mysqli_query($mysqli, $search); 
  $row1 = mysqli_fetch_assoc($result); 
@@ -27,64 +50,61 @@ if (isset($_POST["ord_qty"]))
 
                 print "<h4>Enter the requested quantity!</h4>";
 	}
-	elseif (($_POST["ord_qty"] > $row1["sto_qty"])) { 
+	elseif ($_POST["ord_qty"] > ($row["ord_qty"] + $row1["sto_qty"])) { 
             
                 print "<h4>Sorry, but the product is not avaiable in the requested quantity!</h4>";
         } else {      
         $search = "SELECT * FROM cart_tmp WHERE crt_id =  ".(int)$_SESSION["users"]["usr_id"]." AND prod_id = '" . $_POST["prod_id"] . "' ";
         $result = mysqli_query($mysqli, $search);
-        $row = mysqli_fetch_assoc($result);                            
+        $row2 = mysqli_fetch_assoc($result);                            
                 
                 
-        if ( ($row["prod_id"] == $_POST["prod_id"]) && ($row["crt_id"] == $_SESSION["users"]["usr_id"]) ){
+        if ( ($row2["prod_id"] == $_POST["prod_id"]) && ($row2["crt_id"] == $_SESSION["users"]["usr_id"]) ){
 
-            $new_qty = $row["ord_qty"] + $_POST["ord_qty"] ;     
+            if (($row2["ord_qty"] + $row1["sto_qty"]) >= $_POST["ord_qty"]) {     
             // Update the Product Quantaty in the Cart
-            $search = "UPDATE cart_tmp SET ord_qty =  $new_qty  WHERE prod_id =   '" . $_POST["prod_id"] . "' AND crt_id =  ".(int)$_SESSION["users"]["usr_id"]." ";
+            $search = "UPDATE cart_tmp SET ord_qty =  '" . $_POST["ord_qty"] . "'  WHERE prod_id =   '" . $_POST["prod_id"] . "' AND crt_id =  ".(int)$_SESSION["users"]["usr_id"]." ";
             mysqli_query($mysqli, $search);     
                
             print "<h4>The Cart was Updated! </h4>";                           
-            
-              }
-         if ( ($row["prod_id"] != $_POST["prod_id"]) && ($row["crt_id"] != $_SESSION["users"]["usr_id"]) ){      
- 
-            $search = "INSERT INTO cart_tmp (ord_qty, prod_id, crt_id)
-            VALUES
-            ('".$_POST["ord_qty"]."', '".$_POST["prod_id"]."', ".(int)$_SESSION["users"]["usr_id"].");";
-                
-            print "<h4>Succesfully added product to the cart!</h4>";
-              
-            if (!mysqli_query($mysqli, $search)) {
-                
-               die('Error: ' . mysql_error());
-            }
-      
+            }  
         }
+
             $search = "SELECT * FROM products WHERE prod_id = '".$_POST["prod_id"]."' ";
             $result = mysqli_query($mysqli, $search); 
-            $row = mysqli_fetch_assoc($result); 
-            $quantity = $row["sto_qty"] - $_POST["ord_qty"];
+            $row3 = mysqli_fetch_assoc($result); 
+            
+            if ($row["ord_qty"] <= $_POST["ord_qty"]) {
+            $quantity = $row3["sto_qty"] - ($_POST["ord_qty"] - $row["ord_qty"] );
    
             // Update the Product Quantaty in the Product table
             $search = "UPDATE products SET sto_qty =  $quantity  WHERE prod_id =   '" . $_POST["prod_id"] . "'  ";
             mysqli_query($mysqli, $search);
-            print "<h4>The Product Quantity was Updated! </h4>";            
+        //    print "<h4>The Product Quantity was Updated! </h4>";  
+                
+            }
+            if ($row["ord_qty"] >= $_POST["ord_qty"]) {
+            $qty2 = $row3["sto_qty"] + ($row["ord_qty"] - $_POST["ord_qty"]);
+   
+            // Update the Product Quantaty in the Product table
+            $search = "UPDATE products SET sto_qty =  $qty2  WHERE prod_id =   '" . $_POST["prod_id"] . "'  ";
+            mysqli_query($mysqli, $search);
+         //   print "<h4>The Product Quantity was Updated! </h4>";           
          
-        }     
+            }     
          
-    }
-    
+        }
+    } 
  
 } 
   
        $search = "SELECT * FROM products, cart_tmp, category, users WHERE users.usr_id = " . (int) $_SESSION["users"]["usr_id"] . " AND cart_tmp.crt_id = users.usr_id AND products.prod_id = cart_tmp.prod_id AND products.cat_id = category.cat_id";
        $result = mysqli_query($mysqli, $search);
-       
+      
        $total = 0;
        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
        { 
-            $subtotal = $row["price"] * $row["ord_qty"];
-                 
+            $subtotal = $row["price"] * $row["ord_qty"];   
 ?>                  
  
 
@@ -113,7 +133,6 @@ if (isset($_POST["ord_qty"]))
     <p>Value: </p>
   </div>
   <div class="column" style="background-color:#ccc;">
-    
     <p>&pound<?php echo $row["price"]?></p>
   </div>
   <div class="column unit" style="background-color:#bbb;">
@@ -122,13 +141,12 @@ if (isset($_POST["ord_qty"]))
    <div class="column" style="background-color:#ccc;">
     <p>&pound<?php echo $subtotal; ?></p>
   </div>     
-    
-  <div class="column three" style="background-color:#ddd;">
+      
+  <div class="column three" style="background-color:#ddd;">     
   <input name="prod_id" type="hidden" value="<?php echo $row["prod_id"]?>" >      
   <button type="submit" name="submit" class="btn-cart">Update</button> 
 
 <?php   
-
     print '<div class="btn-cart">
          
     <a href="?page=cart_update&prod_id=' . $row["prod_id"] . '&action=remove">Remove</a></div> ';  
@@ -142,13 +160,15 @@ if (isset($_POST["ord_qty"]))
       
 
 <?php 
-        $total += $subtotal;
+         $total += $subtotal;
     } 
+    
+
 
 ?>
       <hr>
       <p>Total Value: <span class="price" style="color:black"><b></b></span></p>
-      <p>&pound<?php echo $total; ?></p>      
+       <p>&pound<?php echo $total; ?></p>      
       
     </div>
      <div class="container-cart">

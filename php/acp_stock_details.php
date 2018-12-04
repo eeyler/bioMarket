@@ -38,7 +38,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "see_details") {
     
   </div>     
   <div class="product">
-    <p>Price: £<?php echo $row["price"]?></p>
+    <p>Price: &pound<?php echo $row["price"]?></p>
   </div>
   <div class="product">
     <p>Supplier: <?php echo $row["sup_name"]?></p>

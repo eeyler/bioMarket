@@ -43,7 +43,7 @@ if ((isset($_POST["prod_id"])) && ((isset($_POST["cat_id"])) || (isset($_POST["s
     
   </div>     
   <div class="product">
-    <p>Price: £<?php echo $row["price"]?></p>
+    <p>Price: &pound<?php echo $row["price"]?></p>
   </div>
   <div class="product">
     <p>Supplier: <?php echo $row["sup_name"]?></p>

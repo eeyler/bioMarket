@@ -34,7 +34,7 @@
     </select>
   </div>     
   <div class="product">
-    <p>Price:</p><input type="number" placeholder="Enter product price" name="price" required>
+    <p>Price: &pound</p><input type="number" placeholder="Enter product price" name="price" step="0.01" required>
   </div>
   <div class="product">
     <p>Supplier: </p>

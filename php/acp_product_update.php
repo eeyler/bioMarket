@@ -39,7 +39,7 @@ if ((isset($_POST["prod_id"])) || (isset($_POST["cat_id"])) || (isset($_POST["su
     
     
   <div class="product">
-    <p>Price:</p><input type="text" name="price" value="<?php echo $row["price"]?>" >
+    <p>Price: &pound</p><input type="text" name="price" value="<?php echo $row["price"]?>" >
   </div>
   <div class="product">
     <p>Supplier: <?php echo $row["sup_name"]?></p>
@@ -76,15 +76,3 @@ if ((isset($_POST["prod_id"])) || (isset($_POST["cat_id"])) || (isset($_POST["su
     }
 
 }   
-/*
-if ((isset($_POST["prod_name"])) || (isset($_POST["cat_id"])) || (isset($_POST["sup_id"]))) {
-    
-    if ((!$_POST["prod_name"] == "")) {
-  
-    // Update the Product Details
-    $search = "UPDATE products SET prod_name = '" . $_POST["prod_name"] . "', price = '" . $_POST["price"] . "',  sup_id = '" . $_POST["sup_id"] . "', prod_dsc = '" . $_POST["prod_dsc"] . "',  cat_id = '" . $_POST["cat_id"] . "', sto_qty = '" . $_POST["sto_qty"] . "' WHERE prod_id =   '" . $_POST["prod_id"] . "'  ";
-    mysqli_query($mysqli, $search);
-    print "<h4>The Product was Updated! </h4>"; 
-   
-    }
-}*/

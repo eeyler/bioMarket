@@ -9,8 +9,6 @@
 <?php  
 $page_title = 'BioMarket | Product'; 
 include "admin_panel_connection.php"; 
-
-
  
     $search = "SELECT * FROM products, suppliers, category WHERE products.cat_id = category.cat_id AND suppliers.sup_id = products.sup_id AND products.prod_id = ".(int)$_REQUEST["prod_id"];
     $result = mysqli_query($mysqli, $search);
@@ -53,14 +51,14 @@ include "admin_panel_connection.php";
   </div>
    
     <div class="product">
-        <p>Quantity: </p><input type="text" placeholder="Enter Required Quantity" name="sto_qty" >
+        <p>Quantity: </p><input type="text" placeholder="Enter Required Quantity" name="ord_qty" >
   </div>   
     
      
     <!-- Hidden Input area to call in the value for the prod_id primary key -->     
     <input name="prod_id" type="hidden" value="<?php echo $row["prod_id"]?>" >  
-    <button type="submit" name="submit" class="btn-login">Add to Cart</button>
-  <!--    <input name="add_to_cart" type="submit" value="Add to Cart">  -->
+ <!--      <button type="submit" name="submit" class="btn-login">Add to Cart</button>-->
+   <input name="add_to_cart" type="submit" value="Add to Cart">  
   </div>  
     
  

@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
     
     
   <div class="product">
-    <p>Price:</p><input type="text" name="price" value="<?php echo $row["price"]?>" >
+    <p>Price: &pound</p><input type="text" name="price" value="<?php echo $row["price"]?>" >
   </div>
   <div class="product">
     <p>Supplier: <?php echo $row["sup_name"]?></p>

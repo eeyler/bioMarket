@@ -13,12 +13,20 @@ $search = "UPDATE users SET
     e_mail = '".$_POST["e_mail"]."',
     pswrd = '".$hashed."',
     acc_crt_dte = NOW(),
-    lvl = 'member',
+    lvl = 'MEMBER',
     WHERE usr_id = ".$users["usr_id"];
 
 mysqli_query($mysqli, $search);
-}
-
+       
+       $userlevel = get_user_level();
+       
+       if (($userlevel == "ADMIN") || ($userlevel == "MEMBER"))
+       {
+     
+       include "profile.php";
+       }
+      
+} 
 else {
     
 
@@ -44,8 +52,8 @@ VALUES
 
 
                     
-                    print "<h2>Successful Registration!</h2>";
-if (!mysqli_query($mysqli, $search))
+                print "<h4>Successful Registration!</h4>";
+  if (!mysqli_query($mysqli, $search))
   {
     die('Error: ' . mysql_error());
   }
@@ -53,7 +61,7 @@ if (!mysqli_query($mysqli, $search))
 		}
 		else
 		{
-                    print "<h2>The Passwords are not identical!</h2>";
+                    print "<h4>The Passwords are not identical!</h4>";
                    
                 }    	
                 
