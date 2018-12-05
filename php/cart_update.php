@@ -166,16 +166,15 @@ if (isset($_POST["ord_qty"]))
 
 
 ?>
-      <hr>
-      <p>Total Value: <span class="price" style="color:black"><b></b></span></p>
-       <p>&pound<?php echo $total; ?></p>      
+    <hr>
+    <p class="total"><span class="price" style="color:black">Total Value:
+                <b>&pound<?php echo $total; ?></b></span></p>   
       
-    </div>
-     <div class="container-cart">
+    <br>
 <?php   
     print '<div class="btn-checkout">
          
-    <a href="?page=checkout&prod_id=' . $row["prod_id"] . '&action=checkout">Proceed to Checkout</a></div> ';  
+    <a href="?page=checkout&crt_ln=' . $row["crt_ln"] . '&action=checkout">Proceed to Checkout</a></div> ';  
       
 ?>     
     </div>

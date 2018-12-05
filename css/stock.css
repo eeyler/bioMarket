@@ -12,6 +12,7 @@
 }
 .column input {background-color: #fff; text-align: right; width: 40px;}
 .two { width: 40%; }
+
 .two-stock {width: 45%;}
 .three { width: 23%; }       
 .unit{
@@ -33,8 +34,10 @@
     border-radius: 3px;
     border: 0;
     font-size: 16px;
+    
 
 }
+.btn-checkout { float: right; margin-bottom: 10px; }
 .btn-cart, .btn-details{ width: 100px; float: left; margin: 0 12px; }
 
 .btn-add:hover, .btn-details:hover, .btn-checkout:hover,
@@ -54,10 +57,11 @@
     height: 41px;
 }
 /* Clear floats after the columns */
-.row-stock:after {
+.row-stock:after, .row-checkout:after, .container-cart:after {
     content: "";
     display: table;
     clear: both;
+
 }
 
 /* Shopping cart own elements */
@@ -78,9 +82,47 @@ span.price {
   color: grey;
 }
 
+/* Checkout */
+.row-checkout { width: 100%; }
+.cat, .check-price { width: 8%; }
+.delivdate { width: 25%; }
+.check-name { width: 71%; }
+.total { 
+    width: 100%;  
+    float: right;   
+    padding: 10px 25px 10px 0px;
+    font-size: 18px;
+}
 
+.container-checkout {
+   float: left;
+   padding: 10px;
+   width: 100%;
+      
+}
+.col1 {
+    width: 65%;  
+}
 
+.col2 {
+     width: 35%; 
+}
 
+/* confirm address */
+.column-stock {width: 100%;}
+.column-stock label {
+ display: block;
+}
+.column-stock input{ 
+    width: 400px;
+    height: 35px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    padding: 5px;
+
+}
+.btn-paypal { width: 400px; float: right; }
 /* Responsive layout - makes the four columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
     .column {
