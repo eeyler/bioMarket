@@ -1,5 +1,8 @@
 
 .panel {
+    position: relative;
+    margin: 10px auto;
+    max-width:1500px;
     overflow: hidden;
 /*    border: 1px solid #ccc;*/
     border-radius: 10px;
