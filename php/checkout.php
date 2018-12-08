@@ -1,126 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/stock.css">
-</head>
-<body>
-<?php
-       $page_title = 'BioMarket | Checkout';
-       include_once "user_panel_connection.php"; 
-        
-?>
-<div class="container-cart">
- <form action="?page=checkout_update" method="post" enctype="multipart/form-data">      
-    <h2>Checkout</h2>
-<div class="row-checkout">
+    </head>
+    <body>
+        <?php
+        $page_title = 'BioMarket | Checkout';
+        include_once "user_panel_connection.php";
+        ?>
+        <div class="container-cart">
+            <h2>Checkout</h2>
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 col-xs-12" >
+                    <h4>Your Basket:</h4>
+                    <?php
+                    if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "checkout") {
 
-    <div class="container-checkout col1">
-      <h4>Your Basket:</h4>
-<?php     
-if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "checkout") {
+                        $search = "SELECT * FROM products, cart_tmp, category, users WHERE users.usr_id = " . (int) $_SESSION["users"]["usr_id"] . " AND cart_tmp.crt_id = users.usr_id AND products.prod_id = cart_tmp.prod_id AND products.cat_id = category.cat_id";
+                        $result = mysqli_query($mysqli, $search);
 
-   $search = "SELECT * FROM products, cart_tmp, category, users WHERE users.usr_id = " . (int) $_SESSION["users"]["usr_id"] . " AND cart_tmp.crt_id = users.usr_id AND products.prod_id = cart_tmp.prod_id AND products.cat_id = category.cat_id";
-   $result = mysqli_query($mysqli, $search);
+                        $total = 0;
+                        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                            $subtotal = $row["price"] * $row["ord_qty"];
+                            ?>  
 
-   $total = 0;
-   
-   while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-   { 
-        $subtotal = $row["price"] * $row["ord_qty"];
-?> 
-    
-        <div class="row-stock">
-          <div class="column cat" style="background-color:#aaa;">
-              <?php print '<div class="category-img"><img alt="product example" src=" ' .$row["cat_img"]. ' "></div>'; ?>
+                            <div class="cart-row">
+                                <div class="row">
+                                    <div class="col-lg-1 col-md-3 col-xs-6 " >
+                                        <?php print '<div class="category-img"><img alt="product example" src=" ' . $row["cat_img"] . ' "></div>'; ?>
+                                    </div>
 
-          </div>
-          <div class="column check-name" style="background-color:#bbb;">
-            <p><?php echo $row["prod_name"]?></p>
+                                    <div class="col-lg-4 col-md-3 col-xs-6" >
+                                        <p><?php echo $row["prod_name"] ?></p>
+                                    </div>
 
-          </div>
-          <div class="column" style="background-color:#ccc;">
-            <p>Qty: </p>
-          </div>
-          <div class="column" style="background-color:#ddd;">
-            <p><?php echo $row["ord_qty"]?></p>              
-          </div>  
-          <div class="column check-price" style="background-color:#ccc;">
-            <p>&pound<?php echo $subtotal;?></p>
-          </div>      
-        </div>      
-<?php 
-       $total += $subtotal;
-   } 
-}
-?>
-      <br>
-      <div class="total">
-        <hr>
-        <p><span class="price" style="color:black">Total Value:
-                <b>&pound<?php echo $total; ?></b></span></p>
-      </div>
-    
-   
-    </div>
-<?php
+                                    <div class="col-lg-1 col-md-3 col-xs-6" >
+                                        <p>Qty: </p>
+                                    </div>
 
-$search = "SELECT * FROM users WHERE usr_id = " .  $_SESSION["users"]["usr_id"] . ";";
-$result = mysqli_query($mysqli, $search);
-$row2 = mysqli_fetch_assoc($result);
+                                    <div class="col-lg-1 col-md-3 col-xs-6" >
+                                        <input name="ord_qty" type="text" value="<?php echo $row["ord_qty"] ?>" >  
+                                    </div> 
+                                    <div class="col-lg-1 col-md-3 col-xs-6" >
+                                        <p>&pound<?php echo $row["price"] ?></p>
+                                    </div>     
+                                </div>      
+                            </div>
 
-?>
-    
-    <div class="container-checkout col2">
+                            <?php
+                            $total += $subtotal;
+                        }
+                    }
+                    ?>
+                    <div class="total">
+                        <hr>
+                        <p><span class="price" style="color:black">Total Value:
+                                <b>&pound<?php echo $total; ?></b></span></p>
+                    </div>
+                </div>
 
-        <div class="column-stock">
+                <div class="col-lg-6 col-sm-12 col-xs-12 " >
 
-           <h4>Confirm Delivery Address:</h4>
-           <br>
-            <label for="street"><b>Address Line 1</b></label>
-                <input type="text"  name="adr_ln_1" value="<?php echo $row2["adr_ln_1"]?>">
-            <label for="city"><b>Address Line 2</b></label>
-                <input type="text" name="adr_ln_2" value="<?php echo $row2["adr_ln_2"]?>">
-            <label for="postcode"><b>Postcode</b></label>
-                <input type="text"  name="pstcod" value="<?php echo $row2["pstcod"]?>">
-        </div> 
+                    <?php
+                    $search = "SELECT * FROM users WHERE usr_id = " . $_SESSION["users"]["usr_id"] . ";";
+                    $result = mysqli_query($mysqli, $search);
+                    $row2 = mysqli_fetch_assoc($result);
+                    ?>
 
-    </div>
-  
-  </div>
-  <div class="row-checkout">
-         <h4>Confirm Delivery Date and Time:</h4>  
-    <div class="container-checkout">        
-          
-          <div class="column delivdate">
-            <h4>DATE: 
-            <?php $deliveryDate = strtotime("tomorrow");
-                  echo date("d/m/Y", $deliveryDate) ;?>
-            </h4>
-             
-          </div>  
-          <div class="column delivdate">
-            <h4>PRICE: &pound5.99</h4>
-         
-          </div>           
+                    <div class="container-checkout col2">
+                        <form action="checkout_update.php">
+                            <div class="column-stock">
 
-        <input name="crt_ln" type="hidden" value="<?php echo $row["crt_ln"]?>" > 
-        <button type="submit" name="submit" class="btn-checkout btn-paypal">Continue to checkout with PayPal</button> 
-    <?php   
-/*
-    print '<div class="btn-checkout btn-paypal">
-         
-    <a href="?page=checkout_update1&crt_ln=' . $row["crt_ln"] . '&action=move_to_orders">Continue to checkout with PayPal</a></div> ';  
- */     
-?>       
-        
-        
-       
- 
-    </div>
-  </div>
- </form>  
- </div>
-   
-</body>
+                                <h4>Confirm Delivery Address:</h4>
+                                <br>
+                                <label for="street"><b>Address Line 1</b></label>
+                                <input type="text"  name="adr_ln_1" value="<?php echo $row2["adr_ln_1"] ?>">
+                                <label for="city"><b>Address Line 2</b></label>
+                                <input type="text" name="adr_ln_2" value="<?php echo $row2["adr_ln_2"] ?>">
+                                <label for="postcode"><b>Postcode</b></label>
+                                <input type="text"  name="pstcod" value="<?php echo $row2["pstcod"] ?>">
+                            </div> 
+                        </form>  
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 col-xs-12 cart-row">
+                    <h2>Confirm Delivery Date and Time:</h2> 
+
+
+                    <div class="col-lg-7 col-md-3 col-xs-6" >
+                        <h4>DATE: 
+                            <?php
+                            $deliveryDate = strtotime("tomorrow");
+                            echo date("d/m/Y", $deliveryDate);
+                            ?>
+                        </h4>
+                    </div>
+
+                    <div class="col-lg-5 col-md-3 col-xs-6" >
+                        <h4>PRICE: &pound5.99</h4>
+                    </div>
+
+                </div> 
+
+                <div class="col-lg-6 col-sm-12 col-xs-12">
+                    <div class="col-lg-12" >
+                        <button type="submit" class="btn-checkout btn-paypal">Continue to checkout with PayPal</button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
