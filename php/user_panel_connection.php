@@ -10,7 +10,7 @@
 
 <div class="panel" id="myPanelnav">
   <a href="?page=cart">Your Cart</a>
-  <a href="#?page=user_orders">User Orders</a>
+  <a href="?page=user_orders">User Orders</a>
   <a href="?page=user_details" class="active-panel">User Details</a>
   <a href="javascript:void(0);" class="icon-burger" onclick="myFunction()">
   <i class="fa fa-bars"></i>

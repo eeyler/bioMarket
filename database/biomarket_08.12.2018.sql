@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 04, 2018 at 07:31 PM
+-- Generation Time: Dec 08, 2018 at 12:13 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -31,23 +31,11 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `cart_tmp`;
 CREATE TABLE IF NOT EXISTS `cart_tmp` (
   `crt_ln` int(11) NOT NULL AUTO_INCREMENT,
-  `crt_id` int(11) NOT NULL,
+  `crt_id` int(30) NOT NULL,
   `prod_id` int(11) NOT NULL,
   `ord_qty` int(8) NOT NULL,
   PRIMARY KEY (`crt_ln`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `cart_tmp`
---
-
-INSERT INTO `cart_tmp` (`crt_ln`, `crt_id`, `prod_id`, `ord_qty`) VALUES
-(17, 7, 13, 2),
-(12, 7, 5, 2),
-(18, 7, 16, 2),
-(15, 2, 5, 4),
-(16, 2, 6, 2),
-(19, 2, 2, 10);
+) ENGINE=MyISAM AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -81,11 +69,15 @@ INSERT INTO `category` (`cat_id`, `cat_name`, `cat_img`) VALUES
 
 DROP TABLE IF EXISTS `customer_order`;
 CREATE TABLE IF NOT EXISTS `customer_order` (
-  `ord_num` int(11) NOT NULL,
+  `ord_num` varchar(111) NOT NULL,
   `usr_id` int(11) NOT NULL,
   `ord_dte` date NOT NULL,
   `sts` enum('ORDERED','SHIPPED','DELIVERED') NOT NULL,
-  PRIMARY KEY (`ord_num`),
+  `price_sum` decimal(5,2) NOT NULL,
+  `adr_ln_1` varchar(60) NOT NULL,
+  `adr_ln_2` varchar(60) NOT NULL,
+  `pstcod` varchar(10) NOT NULL,
+  PRIMARY KEY (`ord_num`) USING BTREE,
   KEY `usr_id` (`usr_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -93,9 +85,9 @@ CREATE TABLE IF NOT EXISTS `customer_order` (
 -- Dumping data for table `customer_order`
 --
 
-INSERT INTO `customer_order` (`ord_num`, `usr_id`, `ord_dte`, `sts`) VALUES
-(1, 7, '2018-12-03', 'ORDERED'),
-(2, 7, '2018-12-10', 'ORDERED');
+INSERT INTO `customer_order` (`ord_num`, `usr_id`, `ord_dte`, `sts`, `price_sum`, `adr_ln_1`, `adr_ln_2`, `pstcod`) VALUES
+('7_20181207192317', 7, '2018-12-07', 'ORDERED', '1.52', '123', 'Feltham', 'cnvc'),
+('7_20181207192424', 7, '2018-12-07', 'ORDERED', '19.25', '123', 'Feltham', 'cnvc');
 
 -- --------------------------------------------------------
 
@@ -105,11 +97,12 @@ INSERT INTO `customer_order` (`ord_num`, `usr_id`, `ord_dte`, `sts`) VALUES
 
 DROP TABLE IF EXISTS `customer_order_line`;
 CREATE TABLE IF NOT EXISTS `customer_order_line` (
-  `ord_num` int(11) NOT NULL,
   `ord_ln` int(11) NOT NULL,
+  `ord_num` varchar(111) NOT NULL,
   `prod_id` int(11) NOT NULL,
   `ord_qty` int(8) NOT NULL,
-  PRIMARY KEY (`ord_ln`),
+  `sub_total` decimal(5,2) NOT NULL,
+  PRIMARY KEY (`ord_ln`) USING BTREE,
   KEY `ord_num` (`ord_num`),
   KEY `prod_id` (`prod_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -118,11 +111,11 @@ CREATE TABLE IF NOT EXISTS `customer_order_line` (
 -- Dumping data for table `customer_order_line`
 --
 
-INSERT INTO `customer_order_line` (`ord_num`, `ord_ln`, `prod_id`, `ord_qty`) VALUES
-(1, 1, 2, 22),
-(1, 2, 3, 33),
-(1, 3, 5, 11),
-(1, 4, 7, 23);
+INSERT INTO `customer_order_line` (`ord_ln`, `ord_num`, `prod_id`, `ord_qty`, `sub_total`) VALUES
+(74, '7_20181207192424', 2, 1, '2.03'),
+(75, '7_20181207192424', 15, 2, '7.12'),
+(76, '7_20181207192424', 16, 1, '10.10'),
+(73, '7_20181207192317', 14, 1, '1.52');
 
 -- --------------------------------------------------------
 
@@ -143,30 +136,30 @@ CREATE TABLE IF NOT EXISTS `products` (
   PRIMARY KEY (`prod_id`),
   KEY `sup_id` (`sup_id`),
   KEY `cat_id` (`cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`prod_id`, `prod_name`, `price`, `sup_id`, `prod_dsc`, `prod_img`, `cat_id`, `sto_qty`) VALUES
-(1, 'Pomegrade Juice', '1.25', 2, 'Really nice product description for Pomegrade Juice', 'img/uploads/5bfc8efd684495.54781090.jpg', 2, 23),
-(2, 'Kale Juice', '2.03', 2, 'Really nice product description for Kale Juice', 'img/uploads/5bfc8ee02d5a58.55705998.jpg', 2, 10),
-(3, 'Carrot Juice', '0.86', 2, 'Really nice product description for Carrot Juice', 'img/uploads/5bfc8ebcb60fa4.65547830.jpg', 2, 235),
-(4, 'Broccoli and Ricotta Pie', '1.25', 1, 'Really nice product description for Broccoli and Ricotta Pie', 'img/uploads/5bfc8dc80e44b7.38413046.jpg', 1, 32),
-(5, 'Bread with Raisins', '2.62', 1, 'Really nice product description for Bread with Raisins', 'img/uploads/5bfc8b69202624.26787220.jpg', 1, 14),
-(6, 'Coconut Bars', '3.58', 1, 'Really nice product description for Coconut Bars', 'img/uploads/5bfc8dea460e81.62966147.jpg', 1, 13),
-(7, 'French Baguette', '2.14', 1, 'Really nice product description for French Baguette', 'img/uploads/5bfc8e819496a5.59336623.jpg', 1, 234),
-(8, 'Yogurt', '0.50', 4, 'Really nice product description for Yogurt', 'img/uploads/5bfc93e69e7ae7.06241521.jpg', 4, 43),
-(9, 'Cottage Cheese', '4.15', 4, 'Really nice product description for Cottage Cheese', 'img/uploads/5bfc944b347bb6.96054639.jpg', 4, 0),
-(10, 'Coconut Milk', '3.45', 4, 'Really nice product description for Coconut Milk', 'img/uploads/5bfc94c763b756.98268375.jpg', 4, 44),
-(11, 'Avocado', '2.78', 3, 'Really nice product description for Avocado', 'img/uploads/5bfc9547e90978.70031156.jpg', 3, 435),
-(12, 'Peas', '5.70', 3, 'Really nice product description for Peas', 'img/uploads/5bfc95aa96d079.50991718.jpg', 3, 45),
-(13, 'Beetroots', '4.02', 3, 'Really nice product description for Beetroots', 'img/uploads/5bfc961f9de346.08918563.jpg', 3, 15),
-(14, 'Tomatoes', '1.52', 3, 'Really nice product description for Tomatoes', 'img/uploads/5bfc96d55d6458.60612011.jpg', 3, 34),
-(15, 'Lime and Apple Juice', '3.56', 2, 'Really nice product description for Lime and Apple Juice', 'img/uploads/5bfca66b203680.63516952.jpg', 2, 120),
-(16, 'Quark Breakfast Selection', '10.10', 4, 'Really nice product description for Quark Breakfast Selection', 'img/uploads/5bfca7094f5864.47772269.jpg', 4, 11),
-(17, 'Onions', '1.25', 3, 'Really nice product description for Onions', 'img/uploads/5bfca533eb0f58.64750428.jpg', 3, 73);
+(1, 'Pomegrade Juice', '1.25', 2, 'Really nice product description for Pomegrade Juice', 'img/uploads/5bfc8efd684495.54781090.jpg', 2, 14),
+(2, 'Kale Juice', '2.03', 2, 'Really nice product description for Kale Juice', 'img/uploads/5bfc8ee02d5a58.55705998.jpg', 2, 0),
+(3, 'Carrot Juice', '0.86', 2, 'Really nice product description for Carrot Juice', 'img/uploads/5bfc8ebcb60fa4.65547830.jpg', 2, 232),
+(4, 'Broccoli and Ricotta Pie', '1.25', 1, 'Really nice product description for Broccoli and Ricotta Pie', 'img/uploads/5bfc8dc80e44b7.38413046.jpg', 1, 33),
+(5, 'Bread with Raisins', '2.62', 1, 'Really nice product description for Bread with Raisins', 'img/uploads/5bfc8b69202624.26787220.jpg', 1, 11),
+(6, 'Coconut Bars', '3.58', 1, 'Really nice product description for Coconut Bars', 'img/uploads/5bfc8dea460e81.62966147.jpg', 1, 14),
+(7, 'French Baguette', '2.14', 1, 'Really nice product description for French Baguette', 'img/uploads/5bfc8e819496a5.59336623.jpg', 1, 233),
+(8, 'Yogurt', '0.50', 4, 'Really nice product description for Yogurt', 'img/uploads/5bfc93e69e7ae7.06241521.jpg', 4, 16),
+(9, 'Cottage Cheese', '4.15', 4, 'Really nice product description for Cottage Cheese', 'img/uploads/5bfc944b347bb6.96054639.jpg', 4, 7),
+(10, 'Coconut Milk', '3.45', 4, 'Really nice product description for Coconut Milk', 'img/uploads/5bfc94c763b756.98268375.jpg', 4, 41),
+(11, 'Avocado', '2.78', 3, 'Really nice product description for Avocado', 'img/uploads/5bfc9547e90978.70031156.jpg', 3, 23),
+(12, 'Peas', '5.70', 3, 'Really nice product description for Peas', 'img/uploads/5bfc95aa96d079.50991718.jpg', 3, 20),
+(13, 'Beetroots', '4.02', 3, 'Really nice product description for Beetroots', 'img/uploads/5bfc961f9de346.08918563.jpg', 3, 11),
+(14, 'Tomatoes', '1.52', 3, 'Really nice product description for Tomatoes', 'img/uploads/5bfc96d55d6458.60612011.jpg', 3, 21),
+(15, 'Lime and Apple Juice', '3.56', 2, 'Really nice product description for Lime and Apple Juice', 'img/uploads/5bfca66b203680.63516952.jpg', 2, 115),
+(16, 'Quark Breakfast Selection', '10.10', 4, 'Really nice product description for Quark Breakfast Selection', 'img/uploads/5bfca7094f5864.47772269.jpg', 4, 17),
+(17, 'Onions', '1.25', 3, 'Really nice product description for Onions', 'img/uploads/5bfca533eb0f58.64750428.jpg', 3, 79);
 
 -- --------------------------------------------------------
 
@@ -200,13 +193,27 @@ INSERT INTO `suppliers` (`sup_id`, `sup_name`, `sup_email`) VALUES
 
 DROP TABLE IF EXISTS `supplier_ord`;
 CREATE TABLE IF NOT EXISTS `supplier_ord` (
-  `sup_ord_id` int(11) NOT NULL,
-  `sup_id` int(11) NOT NULL,
+  `sup_ord_id` varchar(100) NOT NULL,
   `sts` enum('SUBMITED','CLOSED') NOT NULL,
   `ord_dte` date NOT NULL,
-  PRIMARY KEY (`sup_ord_id`),
-  KEY `sup_id` (`sup_id`)
+  `price_sum` decimal(5,2) NOT NULL,
+  PRIMARY KEY (`sup_ord_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `supplier_ord`
+--
+
+INSERT INTO `supplier_ord` (`sup_ord_id`, `sts`, `ord_dte`, `price_sum`) VALUES
+('5_20181207205734', 'CLOSED', '2018-12-07', '8.41'),
+('5_20181207205918', 'SUBMITED', '2018-12-07', '71.25'),
+('5_20181207210039', 'CLOSED', '2018-12-07', '88.84'),
+('5_20181207210614', 'SUBMITED', '2018-12-07', '27.33'),
+('5_20181207210659', 'CLOSED', '2018-12-07', '96.80'),
+('5_20181207213447', 'CLOSED', '2018-12-07', '1.25'),
+('5_20181207213914', 'SUBMITED', '2018-12-07', '29.40'),
+('5_20181208112709', 'CLOSED', '2018-12-08', '11.37'),
+('5_20181208113018', 'CLOSED', '2018-12-08', '5.56');
 
 -- --------------------------------------------------------
 
@@ -216,14 +223,47 @@ CREATE TABLE IF NOT EXISTS `supplier_ord` (
 
 DROP TABLE IF EXISTS `supplier_ord_ln`;
 CREATE TABLE IF NOT EXISTS `supplier_ord_ln` (
+  `sup_ord_id` varchar(30) NOT NULL,
   `sup_ord_ln` int(11) NOT NULL,
-  `sup_ord_id` int(11) NOT NULL,
   `ord_qty` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+  `prod_id` int(11) NOT NULL,
+  `price` decimal(5,2) NOT NULL,
   PRIMARY KEY (`sup_ord_ln`),
   KEY `sup_ord_id` (`sup_ord_id`),
-  KEY `product_id` (`product_id`)
+  KEY `product_id` (`prod_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `supplier_ord_ln`
+--
+
+INSERT INTO `supplier_ord_ln` (`sup_ord_id`, `sup_ord_ln`, `ord_qty`, `prod_id`, `price`) VALUES
+('5_20181207205734', 21, 2, 6, '7.16'),
+('5_20181207205734', 20, 1, 4, '1.25'),
+('5_20181207205918', 23, 5, 16, '50.50'),
+('5_20181207205918', 22, 5, 9, '20.75'),
+('5_20181207210039', 27, 6, 14, '9.12'),
+('5_20181207210039', 26, 6, 13, '24.12'),
+('5_20181207210039', 25, 6, 12, '34.20'),
+('5_20181207210039', 24, 5, 11, '13.90'),
+('5_20181207210039', 28, 6, 17, '7.50'),
+('5_20181207210614', 33, 3, 1, '3.75'),
+('5_20181207210614', 32, 3, 21, '6.00'),
+('5_20181207210614', 31, 3, 2, '6.09'),
+('5_20181207210614', 30, 9, 3, '7.74'),
+('5_20181207210614', 29, 3, 4, '3.75'),
+('5_20181207210659', 36, 5, 16, '50.50'),
+('5_20181207210659', 35, 5, 10, '17.25'),
+('5_20181207210659', 34, 7, 9, '29.05'),
+('5_20181207213447', 37, 1, 4, '1.25'),
+('5_20181207213914', 41, 3, 14, '4.56'),
+('5_20181207213914', 40, 3, 12, '17.10'),
+('5_20181207213914', 39, 2, 5, '5.24'),
+('5_20181207213914', 38, 2, 4, '2.50'),
+('5_20181208112709', 44, 3, 14, '4.56'),
+('5_20181208112709', 43, 2, 11, '5.56'),
+('5_20181208112709', 42, 1, 4, '1.25'),
+('5_20181208113018', 45, 2, 11, '5.56');
 
 -- --------------------------------------------------------
 
@@ -233,12 +273,12 @@ CREATE TABLE IF NOT EXISTS `supplier_ord_ln` (
 
 DROP TABLE IF EXISTS `sup_ord_tmp`;
 CREATE TABLE IF NOT EXISTS `sup_ord_tmp` (
-  `sup_ord_id` int(11) NOT NULL,
+  `sup_ord_id` int(30) NOT NULL,
   `ord_ln` int(11) NOT NULL AUTO_INCREMENT,
   `ord_qty` int(8) NOT NULL,
   `prod_id` int(11) NOT NULL,
   PRIMARY KEY (`ord_ln`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -262,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `acc_crt_dte` datetime NOT NULL,
   PRIMARY KEY (`usr_id`),
   UNIQUE KEY `e_mail` (`e_mail`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -271,9 +311,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`usr_id`, `f_name`, `l_name`, `e_mail`, `phn_num`, `dob`, `adr_ln_1`, `adr_ln_2`, `pstcod`, `lvl`, `pswrd`, `acc_crt_dte`) VALUES
 (1, 'Admin', 'Biomarket', 'admin@biomarket.co.uk', '1234568', '2018-12-11', 'UWL', 'London', 'W5 5RF', 'ADMIN', '$2y$10$6cCkjGqqf2QyQmxP/w.aEuVHjBgMf3iIBM0Gvo7fkyl.rfdHAaXHS', '2018-12-01 07:31:25'),
 (2, 'Edit', 'Egri', 'edit.egri@yahoo.co.uk', '132435', '2018-11-05', '56 Staines Road', 'London', 'TW14 9HP', 'MEMBER', '$2y$10$nAzaXTXVvZMy0CM.yXiJ7.prueM/GMoFNhdzxIx5cke.44KamxjW.', '2018-11-26 00:25:40'),
-(3, 'E', 'E', 'egri.editerika@gmail.com', '242', '2018-12-04', 'cvnc', 'cvnc', 'cnvc', 'MEMBER', '$2y$10$bWP9ae.ZgmWtWKXtkyhJuuzXHytEENL8we8WHOx9UccRtoOUiTtpy', '2018-12-01 15:44:20'),
+(3, 'John', 'Small', 'egri.editerika@gmail.com', '242', '2018-12-04', 'cvnc', 'cvnc', 'cnvc', 'MEMBER', '$2y$10$bWP9ae.ZgmWtWKXtkyhJuuzXHytEENL8we8WHOx9UccRtoOUiTtpy', '2018-12-01 15:44:20'),
 (4, 'Dominykas', 'Genys', 'dominykasgenysmail@gmail.com', '07401528222', '2018-11-06', '777', 'london', 'tw3 3ne', 'MEMBER', '$2y$10$lXc.2Ep53EIRVOvwc4YKp.TE8039.UE8iGYgF/3uFB9ph.3TIBzSS', '2018-12-01 16:01:44'),
-(5, 'AdminTester', 'Tester', '21353578@student.uwl.ac.uk', '07401528456', '2018-09-03', '12 kalo st.', 'london', 'W5 5RF', 'ADMIN', '$2y$10$LsFHtGnFwz8WnYfvkI8TTe0T7Bq99bt7MpadXcXU1H3aOhXU1qh3W', '2018-12-01 16:15:24');
+(5, 'AdminTester', 'Tester', '21353578@student.uwl.ac.uk', '07401528456', '2018-09-03', '12 kalo st.', 'london', 'W5 5RF', 'ADMIN', '$2y$10$LsFHtGnFwz8WnYfvkI8TTe0T7Bq99bt7MpadXcXU1H3aOhXU1qh3W', '2018-12-01 16:15:24'),
+(6, 'James', 'Evans', 'egri.editerika@sm.com', '242', '2018-12-04', 'cvnc', 'cvnc', 'cnvc', 'MEMBER', '$2y$10$bWP9ae.ZgmWtWKXtkyhJuuzXHytEENL8we8WHOx9UccRtoOUiTtpy', '2018-12-01 15:44:20'),
+(7, 'E', 'Lamm', 'lammmeer@gmail.com', '242', '2018-12-04', '123', 'Feltham', 'cnvc', 'MEMBER', '$2y$10$O2TAs54vH8qmlsw1axMcteoiF8.YWxA51j7FbmuwRI2fVkqv4CpvG', '2018-12-01 15:44:20');
 
 --
 -- Constraints for dumped tables

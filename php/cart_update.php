@@ -80,7 +80,7 @@ if (isset($_POST["ord_qty"]))
             // Update the Product Quantaty in the Product table
             $search = "UPDATE products SET sto_qty =  $quantity  WHERE prod_id =   '" . $_POST["prod_id"] . "'  ";
             mysqli_query($mysqli, $search);
-        //    print "<h4>The Product Quantity was Updated! </h4>";  
+
                 
             }
             if ($row["ord_qty"] >= $_POST["ord_qty"]) {
@@ -89,7 +89,7 @@ if (isset($_POST["ord_qty"]))
             // Update the Product Quantaty in the Product table
             $search = "UPDATE products SET sto_qty =  $qty2  WHERE prod_id =   '" . $_POST["prod_id"] . "'  ";
             mysqli_query($mysqli, $search);
-         //   print "<h4>The Product Quantity was Updated! </h4>";           
+        
          
             }     
          

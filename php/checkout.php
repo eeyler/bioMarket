@@ -11,6 +11,7 @@
         
 ?>
 <div class="container-cart">
+ <form action="?page=checkout_update" method="post" enctype="multipart/form-data">      
     <h2>Checkout</h2>
 <div class="row-checkout">
 
@@ -23,10 +24,12 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "checkout") {
    $result = mysqli_query($mysqli, $search);
 
    $total = 0;
+   
    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
    { 
         $subtotal = $row["price"] * $row["ord_qty"];
-?>      
+?> 
+    
         <div class="row-stock">
           <div class="column cat" style="background-color:#aaa;">
               <?php print '<div class="category-img"><img alt="product example" src=" ' .$row["cat_img"]. ' "></div>'; ?>
@@ -43,7 +46,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "checkout") {
             <p><?php echo $row["ord_qty"]?></p>              
           </div>  
           <div class="column check-price" style="background-color:#ccc;">
-            <p>&pound<?php echo $row["price"]?></p>
+            <p>&pound<?php echo $subtotal;?></p>
           </div>      
         </div>      
 <?php 
@@ -69,7 +72,7 @@ $row2 = mysqli_fetch_assoc($result);
 ?>
     
     <div class="container-checkout col2">
-      <form action="checkout_update.php">
+
         <div class="column-stock">
 
            <h4>Confirm Delivery Address:</h4>
@@ -81,13 +84,14 @@ $row2 = mysqli_fetch_assoc($result);
             <label for="postcode"><b>Postcode</b></label>
                 <input type="text"  name="pstcod" value="<?php echo $row2["pstcod"]?>">
         </div> 
-      </form>  
+
     </div>
+  
   </div>
   <div class="row-checkout">
          <h4>Confirm Delivery Date and Time:</h4>  
     <div class="container-checkout">        
-         
+          
           <div class="column delivdate">
             <h4>DATE: 
             <?php $deliveryDate = strtotime("tomorrow");
@@ -100,11 +104,23 @@ $row2 = mysqli_fetch_assoc($result);
          
           </div>           
 
-    
-        <button type="submit" class="btn-checkout btn-paypal">Continue to checkout with PayPal</button>           
+        <input name="crt_ln" type="hidden" value="<?php echo $row["crt_ln"]?>" > 
+        <button type="submit" name="submit" class="btn-checkout btn-paypal">Continue to checkout with PayPal</button> 
+    <?php   
+/*
+    print '<div class="btn-checkout btn-paypal">
+         
+    <a href="?page=checkout_update1&crt_ln=' . $row["crt_ln"] . '&action=move_to_orders">Continue to checkout with PayPal</a></div> ';  
+ */     
+?>       
+        
+        
+       
+ 
     </div>
   </div>
-
+ </form>  
  </div>
+   
 </body>
 </html>

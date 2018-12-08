@@ -17,9 +17,9 @@
     
     // Delete Product from the cart    
     if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "remove") {
-    $search = "SELECT * FROM products, category WHERE products.cat_id = category.cat_id ORDER BY products.cat_id";
+ /*   $search = "SELECT * FROM products, category WHERE products.cat_id = category.cat_id ORDER BY products.cat_id";
     $result = mysqli_query($mysqli, $search);        
-  
+ */ 
     
     $search = "DELETE FROM products WHERE prod_id = ".(int)$_REQUEST["prod_id"]." ";
     mysqli_query($mysqli, $search);   

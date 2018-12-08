@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+}
+.column {
+   float: left;
+   width: 5%;
+   padding: 10px;
+   height: 50px;
+   vertical-align: middle;
+   text-align: left;
+}
+.category-img img{
+    width: 39px;
+    height: 41px;
+}
+.cat, .check-price { width: 8%; }
+
+.check-name { width: 71%; }
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+/* The Orders container */
+.orders_container {
+  background-color: #f2f2f2;
+  padding: 10px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  width: 100%; 
+  font-size: 16px;
+}
+.smaller_container {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;   
+}
+.ord_id, .value {
+    display: inline;
+}
+.value {padding-left: 50px;}
+/* Clear floats after the columns */
+.smaller_container:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}
+.orders_column {
+   float: left;
+   padding: 10px;
+   width: 100%;
+      
+}
+.col1 {
+    width: 65%;  
+}
+
+.col2 {
+     width: 35%; 
+}
+
+.btn-paypal { width: 400px; float: right; }
+/* Responsive layout - makes the four columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
