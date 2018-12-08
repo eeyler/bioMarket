@@ -1,73 +1,111 @@
 img {vertical-align: middle;}
 
 .mySlides {
-  display: none;  
-  max-width: 100%;
-  height: 390px;
-  margin: auto, 0;
-  opacity: 1;
+    display: none;  
+    max-width: 1500px;
+    height: auto;
+    margin: auto 0;
+    opacity: 1;
+    padding: 0;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
 
-  padding: 0;
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
+.mySlides h3{
+    font-size: 50px;
+    color: #ffffff;
+}
+
+@media (max-width: 600px) {
+    .mySlides h3{
+        font-size: 25px;
+
+    }
 }
 /* Caption text */
 .text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  margin: 0;
-  text-align: center;
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    margin: 0;
+    text-align: center;
 }
 
 /* Number text (1/3 etc) */
 .numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
 }
 
 /* The dots/bullets/indicators */
 .dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
 }
 
 .active {
-  background-color: #717171;
+    background-color: #717171;
 }
 
 /* Fading animation */
 .fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 3s;
+    animation-name: fade;
+    animation-duration: 3s;
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+    from {opacity: .4} 
+    to {opacity: 1}
+
 }
 
 @keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+    from {opacity: .4} 
+    to {opacity: 1}
+
+}
+
+.zoom {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 3s;
+    animation-name: zoom;
+    animation-duration: 3s;
+}
+
+@-webkit-keyframes zoom {
+
+    from {transform: scale(1)}
+    to {transform: scale(1.5)}
+}
+
+@keyframes zoom {
+
+    from {transform: scale(1)}
+    to {transform: scale(1.5)}
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
+    .text {font-size: 11px}
 }
+.cont{
+    max-width: 1500px;
+    position: relative;
+    margin: 20px auto 5px auto;
+}
+
