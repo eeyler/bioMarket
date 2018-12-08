@@ -11,6 +11,7 @@ body {
     background: #FFFFFF;
     min-width: 280px;
     height: 400px;
+    margin-top: 20px;
 
     -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
@@ -35,38 +36,39 @@ body {
     opacity: .6;
 }
 .post-module .thumbnail {
-    background: #000000;
+    background: #ffffff;
     height: 400px;
     overflow: hidden;
     
 }
-.post-module .thumbnail .discount {
+.post-module .thumbnail .price {
     position: absolute;
     top: 20px;
     right: 20px;
     z-index: 1;
-    background: #e74c3c;
-    width: 55px;
-    height: 55px;
+    background: rgb(52, 152, 219, 0.8);
+    width: 110px;
+    height: 75px;
     padding: 18px 0;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
-    color: #FFFFFF;
-    font-weight: 700;
+    color: #ffffff;
+    font-weight: 900;
     text-align: center;
     -webkti-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.post-module .thumbnail .discount .deal {
-    font-size: 16px;
+.post-module .thumbnail .price .deal {
+    font-size: 30px;
 }
 
 .post-module .thumbnail img {
     display: block;
-    width: 270px;
-    height: 230px;
+
+    /*width: 270px;
+    height: 230px;*/
     -webkit-transition: all 0.3s linear 0s;
     -moz-transition: all 0.3s linear 0s;
     -ms-transition: all 0.3s linear 0s;
@@ -143,7 +145,7 @@ body {
 }
 .container {
    
-    width: 25%;
+    width: 100%;
    
     margin: 20px auto;
 
@@ -223,7 +225,7 @@ p { padding-left: 10px; }
 }
 .toCard a{  color: #fff;}
 
-.btn-toCard:hover{
+.btn-toCard, .toCard:hover{
     background-color: rgb(52, 152, 219, 0.8);
     border-radius:10px;
     font-size: 20px;
