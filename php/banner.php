@@ -5,23 +5,23 @@
 </head>
 <body>
 
-<div class="slideshow-container">
+<div class="slideshow-container cont">
 <div class="mySlides fade">
   <div class="numbertext">1 / 3</div>
-  <img alt="Offer 1" src="img/Vegaterian-Peppers-wkshop-banner-800-300-w.jpg" style="width:100%">
-  <div class="text"><h3>TODAY'S OFFERS</h3></div>
+  <img class='zoom' alt="Offer 1" src="img/Vegaterian-Peppers-wkshop-banner-800-300-w.jpg" style="width:100%">
+  <div class="text"><h3>-20% Today Only</h3></div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">2 / 3</div>
-  <img alt="Offer 2" src="img/Vegetable-Wkshop-banner-800-300-w.jpg" style="width:100%">
-  <div class="text"><h3>WEEKEND'S OFFERS</h3></div>
+  <img class='zoom' alt="Offer 2" src="img/Vegetable-Wkshop-banner-800-300-w.jpg" style="width:100%">
+  <div class="text"><h3>-25% All week</h3></div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">3 / 3</div>
-  <img alt="Offer 3" src="img/fresh-food-banner.jpg" style="width:100%">
-  <div class="text"><h3>HOLIDAY OFFERS</h3></div>
+  <img class='zoom' alt="Offer 3" src="img/fresh-food-banner.jpg" style="width:100%">
+  <div class="text"><h3>-50% Tomorrow Only</h3></div>
 </div>
 
 </div> 
