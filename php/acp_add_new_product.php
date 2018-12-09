@@ -49,7 +49,7 @@
      
   <div class="product">
     <p>Description of the Product:</p>
-    <textarea  placeholder="Enter Product Description" name="prod_dsc" maxlength="255" required></textarea>
+    <textarea  placeholder="Enter Product Description" name="prod_dsc" maxlength="230" required></textarea>
   </div>
   <div class="product quantity">
     <p>Quantity:  <input type="number" placeholder="Enter stock quantity" name="sto_qty" required></p>

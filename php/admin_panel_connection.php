@@ -13,7 +13,7 @@
   <a href="?page=acp_stock" class="active-panel">Stock</a>
   <a href="?page=acp_customers_orders">Customer Orders</a>
   <a href="?page=acp_suppliers_orders">Supplier Orders</a>
-  <a href="?page=acp_customers">Customers</a>
+  <a href="?page=acp_customers">Customer Report</a>
   <a href="?page=user_details">User Details</a>
   <a href="javascript:void(0);" class="icon-burger" onclick="myFunction()">
   <i class="fa fa-bars"></i>

@@ -17,7 +17,29 @@
 	$user = '5';
         
 include "admin_panel_connection.php";	
-include "sup_panel.php";	
+
+	echo	
+			"<table>
+			<tr>
+                        <td>
+			<form action='?page=acp_sup_ord_main' method = 'post'>                      
+
+			<input type='submit' value='GO TO SUPPLIER ORDER CREATION'>
+			</form>
+			</td>
+			<td>
+			<form action='?page=acp_sup_ord_view' method = 'post'>
+			<input type='submit' value='GO TO ORDER VIEW'>
+			</form>
+			</td>
+
+			</tr>
+
+			</table>";
+	
+	
+
+		
 
 	echo "<h1>ARCHIVE</h1>";
 

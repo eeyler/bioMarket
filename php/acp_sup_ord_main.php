@@ -15,7 +15,28 @@
 	
 	$page_title = 'BioMarket | Supplier Order';
         include "admin_panel_connection.php";	       
-        include "sup_panel.php";
+        
+	echo	
+			"<table>
+			<tr>
+			<td>
+			<form action='?page=acp_sup_ord_view' method = 'post'>
+			<input type='submit' value='GO TO ORDER VIEW'>
+			</form>
+			</td>
+			<td>
+			<form action='?page=acp_sup_ord_arch' method = 'post'>                       
+
+			<input type='submit' value='GO TO ARCHIVE'>
+			</form>
+			</td>
+			</tr>
+
+			</table>";
+	
+	
+
+
          
         
 	$user =  '5';

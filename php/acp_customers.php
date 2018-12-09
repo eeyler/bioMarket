@@ -16,7 +16,7 @@
     
 ?>    
  <div class="orders_container">
-      <h2>Customers:</h2>  
+      <h2>Customers Report:</h2>  
 <?php      
 $search1 = "SELECT u.f_name AS f_name, u.l_name AS l_name, u.acc_crt_dte AS acc_crt_dte, u.usr_id AS usr_id, CASE WHEN SUM(col.sub_total) > 0 THEN SUM(col.sub_total) ELSE 0 END as sub_total FROM users u  LEFT JOIN customer_order co ON u.usr_id = co.usr_id LEFT JOIN customer_order_line col ON co.ord_num = col.ord_num  WHERE u.lvl = 'MEMBER' GROUP BY u.usr_id ORDER BY sub_total DESC";
 $result1 = mysqli_query($mysqli, $search1);
