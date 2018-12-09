@@ -8,7 +8,7 @@
   
 <?php  
 $page_title = 'BioMarket | Product'; 
-include "admin_panel_connection.php"; 
+include "user_panel_connection.php"; 
  
     $search = "SELECT * FROM products, suppliers, category WHERE products.cat_id = category.cat_id AND suppliers.sup_id = products.sup_id AND products.prod_id = ".(int)$_REQUEST["prod_id"];
     $result = mysqli_query($mysqli, $search);

@@ -10,8 +10,8 @@
 
 <?php  include "admin_panel_connection.php"; ?>
 <body>
-    <div class="btn-add"><a href="?page=acp_add_new_product">Add New Product</a></div>
-    <hr>
+    <div class="btn-new-prod"><a href="?page=acp_add_new_product">Add New Product</a></div>
+
 <?php
     $page_title = 'BioMarket | Stock';
     
@@ -33,49 +33,48 @@
 
                  
 ?>                  
- 
-<div class="row-stock">
-  <div class="column" style="background-color:#aaa;">
-      <?php print '<div class="category-img"><img alt="product example" src=" ' .$row["cat_img"]. ' "></div>'; ?>
+                <div class="cart-row">
+                    <div class="row">
+                        <div class="col-lg-1 col-md-3 col-xs-2 " >
+                        <?php print '<div class="category-img"><img alt="product example" src=" ' .$row["cat_img"]. ' "></div>'; ?>
    
-  </div>
-  <div class="column two-stock" style="background-color:#bbb;">
-    <p><?php echo $row["prod_name"]?></p>
-   
-  </div>
-  <div class="column" style="background-color:#ccc;">
-    <p>Qty: </p>
- 
-  </div>
-  <div class="column" style="background-color:#ddd;">
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-xs-2 stock-name" >
+                            <p><?php echo $row["prod_name"] ?></p>
+                        </div>
+
+                        <div class="col-lg-1 col-md-3 col-xs-2" >
+                            <p>Qty: </p>
+                        </div>
+
+                        <div class="col-lg-1 col-md-3 col-xs-2" >
     
-    <p><?php echo $row["sto_qty"]?></p>
-  </div>  
-  <div class="column unit2" style="background-color:#bbb;">
+                            <p><?php echo $row["sto_qty"]?></p>
+                        </div>  
+                        <div class="col-lg-2 col-md-3 col-xs-2 four" >
    
-    <p>Price per unit: </p>
-  </div>
-  <div class="column" style="background-color:#ccc;">
+                           <p>Price per unit: </p>
+                        </div>
+                        <div class="col-lg-1 col-md-3 col-xs-2" >
     
-    <p>&pound<?php echo $row["price"]?></p>
-  </div>
-  <div class="column three" style="background-color:#ddd;">
+                           <p>&pound<?php echo $row["price"]?></p>
+                        </div>
+                        <div class="col-lg-1 col-md-3 col-xs-2 seven" >
 <?php   
-    print '<div class="btn-details">
-         
-    <a href="?page=acp_stock_details&prod_id=' . $row["prod_id"] . '&action=see_details">Details</a></div> ';  
+    print '<div class="btn-details"><a href="?page=acp_stock_details&prod_id=' . $row["prod_id"] . '&action=see_details">Details</a></div> ';  
       
-?>      
+?>   
+                        </div>                                
+                        <div class="col-lg-1 col-md-3 col-xs-2s five" >                            
 <?php   
-    print '<div class="btn-details">
-         
-    <a href="?page=acp_stock&prod_id=' . $row["prod_id"] . '&action=remove">Remove</a></div> ';    
+    print '<div class="btn-remove"><a href="?page=acp_stock&prod_id=' . $row["prod_id"] . '&action=remove">X</a></div> ';    
       
 ?>       
-  </div>  
+                        </div>  
 
-</div>
+                    </div>
 
+                </div>
 </body>
 
 <?php

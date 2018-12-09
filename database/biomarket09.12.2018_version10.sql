@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 08, 2018 at 12:13 PM
+-- Generation Time: Dec 09, 2018 at 01:26 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -35,7 +35,15 @@ CREATE TABLE IF NOT EXISTS `cart_tmp` (
   `prod_id` int(11) NOT NULL,
   `ord_qty` int(8) NOT NULL,
   PRIMARY KEY (`crt_ln`)
-) ENGINE=MyISAM AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cart_tmp`
+--
+
+INSERT INTO `cart_tmp` (`crt_ln`, `crt_id`, `prod_id`, `ord_qty`) VALUES
+(14, 7, 15, 5),
+(13, 7, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -86,8 +94,12 @@ CREATE TABLE IF NOT EXISTS `customer_order` (
 --
 
 INSERT INTO `customer_order` (`ord_num`, `usr_id`, `ord_dte`, `sts`, `price_sum`, `adr_ln_1`, `adr_ln_2`, `pstcod`) VALUES
-('7_20181207192317', 7, '2018-12-07', 'ORDERED', '1.52', '123', 'Feltham', 'cnvc'),
-('7_20181207192424', 7, '2018-12-07', 'ORDERED', '19.25', '123', 'Feltham', 'cnvc');
+('2_20181208233810', 2, '2018-12-08', 'ORDERED', '22.80', '56 Staines Road', 'London', 'TW14 9HP'),
+('2_20181208233524', 2, '2018-12-08', 'ORDERED', '0.86', '56 Staines Road', 'London', 'TW14 9HP'),
+('7_20181208232724', 7, '2018-12-08', 'ORDERED', '85.52', '123', 'Feltham', 'cnvc'),
+('2_20181208233352', 2, '2018-12-08', 'ORDERED', '40.24', '56 Staines Road', 'London', 'TW14 9HP'),
+('2_20181208233232', 2, '2018-12-08', 'ORDERED', '45.30', '56 Staines Road', 'London', 'TW14 9HP'),
+('7_20181208232700', 7, '2018-12-08', 'ORDERED', '25.10', '123', 'Feltham', 'cnvc');
 
 -- --------------------------------------------------------
 
@@ -112,10 +124,18 @@ CREATE TABLE IF NOT EXISTS `customer_order_line` (
 --
 
 INSERT INTO `customer_order_line` (`ord_ln`, `ord_num`, `prod_id`, `ord_qty`, `sub_total`) VALUES
-(74, '7_20181207192424', 2, 1, '2.03'),
-(75, '7_20181207192424', 15, 2, '7.12'),
-(76, '7_20181207192424', 16, 1, '10.10'),
-(73, '7_20181207192317', 14, 1, '1.52');
+(12, '2_20181208233810', 12, 4, '22.80'),
+(11, '2_20181208233524', 3, 1, '0.86'),
+(9, '2_20181208233352', 3, 8, '6.88'),
+(10, '2_20181208233352', 11, 12, '33.36'),
+(6, '2_20181208233232', 7, 10, '21.40'),
+(7, '2_20181208233232', 10, 4, '13.80'),
+(8, '2_20181208233232', 16, 1, '10.10'),
+(4, '7_20181208232724', 12, 12, '68.40'),
+(5, '7_20181208232724', 7, 8, '17.12'),
+(3, '7_20181208232700', 5, 1, '2.62'),
+(2, '7_20181208232700', 14, 8, '12.16'),
+(1, '7_20181208232700', 3, 12, '10.32');
 
 -- --------------------------------------------------------
 
@@ -136,29 +156,29 @@ CREATE TABLE IF NOT EXISTS `products` (
   PRIMARY KEY (`prod_id`),
   KEY `sup_id` (`sup_id`),
   KEY `cat_id` (`cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`prod_id`, `prod_name`, `price`, `sup_id`, `prod_dsc`, `prod_img`, `cat_id`, `sto_qty`) VALUES
-(1, 'Pomegrade Juice', '1.25', 2, 'Really nice product description for Pomegrade Juice', 'img/uploads/5bfc8efd684495.54781090.jpg', 2, 14),
+(1, 'Pomegrade Juice', '1.25', 2, 'Really nice product description for Pomegrade Juice', 'img/uploads/5bfc8efd684495.54781090.jpg', 2, 1),
 (2, 'Kale Juice', '2.03', 2, 'Really nice product description for Kale Juice', 'img/uploads/5bfc8ee02d5a58.55705998.jpg', 2, 0),
-(3, 'Carrot Juice', '0.86', 2, 'Really nice product description for Carrot Juice', 'img/uploads/5bfc8ebcb60fa4.65547830.jpg', 2, 232),
-(4, 'Broccoli and Ricotta Pie', '1.25', 1, 'Really nice product description for Broccoli and Ricotta Pie', 'img/uploads/5bfc8dc80e44b7.38413046.jpg', 1, 33),
-(5, 'Bread with Raisins', '2.62', 1, 'Really nice product description for Bread with Raisins', 'img/uploads/5bfc8b69202624.26787220.jpg', 1, 11),
+(3, 'Carrot Juice', '0.86', 2, 'Really nice product description for Carrot Juice', 'img/uploads/5bfc8ebcb60fa4.65547830.jpg', 2, 114),
+(4, 'Broccoli and Ricotta Pie', '1.25', 1, 'Really nice product description for Broccoli and Ricotta Pie', 'img/uploads/5bfc8dc80e44b7.38413046.jpg', 1, 3),
+(5, 'Bread with Raisins', '2.62', 1, 'Really nice product description for Bread with Raisins', 'img/uploads/5bfc8b69202624.26787220.jpg', 1, 8),
 (6, 'Coconut Bars', '3.58', 1, 'Really nice product description for Coconut Bars', 'img/uploads/5bfc8dea460e81.62966147.jpg', 1, 14),
-(7, 'French Baguette', '2.14', 1, 'Really nice product description for French Baguette', 'img/uploads/5bfc8e819496a5.59336623.jpg', 1, 233),
+(7, 'French Baguette', '2.14', 1, 'Really nice product description for French Baguette', 'img/uploads/5bfc8e819496a5.59336623.jpg', 1, 181),
 (8, 'Yogurt', '0.50', 4, 'Really nice product description for Yogurt', 'img/uploads/5bfc93e69e7ae7.06241521.jpg', 4, 16),
 (9, 'Cottage Cheese', '4.15', 4, 'Really nice product description for Cottage Cheese', 'img/uploads/5bfc944b347bb6.96054639.jpg', 4, 7),
-(10, 'Coconut Milk', '3.45', 4, 'Really nice product description for Coconut Milk', 'img/uploads/5bfc94c763b756.98268375.jpg', 4, 41),
-(11, 'Avocado', '2.78', 3, 'Really nice product description for Avocado', 'img/uploads/5bfc9547e90978.70031156.jpg', 3, 23),
-(12, 'Peas', '5.70', 3, 'Really nice product description for Peas', 'img/uploads/5bfc95aa96d079.50991718.jpg', 3, 20),
+(10, 'Coconut Milk', '3.45', 4, 'Really nice product description for Coconut Milk', 'img/uploads/5bfc94c763b756.98268375.jpg', 4, 37),
+(11, 'Avocado', '2.78', 3, 'Really nice product description for Avocado', 'img/uploads/5bfc9547e90978.70031156.jpg', 3, 7),
+(12, 'Peas', '5.70', 3, 'Really nice product description for Peas', 'img/uploads/5bfc95aa96d079.50991718.jpg', 3, 3),
 (13, 'Beetroots', '4.02', 3, 'Really nice product description for Beetroots', 'img/uploads/5bfc961f9de346.08918563.jpg', 3, 11),
-(14, 'Tomatoes', '1.52', 3, 'Really nice product description for Tomatoes', 'img/uploads/5bfc96d55d6458.60612011.jpg', 3, 21),
-(15, 'Lime and Apple Juice', '3.56', 2, 'Really nice product description for Lime and Apple Juice', 'img/uploads/5bfca66b203680.63516952.jpg', 2, 115),
-(16, 'Quark Breakfast Selection', '10.10', 4, 'Really nice product description for Quark Breakfast Selection', 'img/uploads/5bfca7094f5864.47772269.jpg', 4, 17),
+(14, 'Tomatoes', '1.52', 3, 'Really nice product description for Tomatoes', 'img/uploads/5bfc96d55d6458.60612011.jpg', 3, 13),
+(15, 'Lime and Apple Juice', '3.56', 2, 'Really nice product description for Lime and Apple Juice', 'img/uploads/5bfca66b203680.63516952.jpg', 2, 106),
+(16, 'Quark Breakfast Selection', '10.10', 4, 'Really nice product description for Quark Breakfast Selection', 'img/uploads/5bfca7094f5864.47772269.jpg', 4, 16),
 (17, 'Onions', '1.25', 3, 'Really nice product description for Onions', 'img/uploads/5bfca533eb0f58.64750428.jpg', 3, 79);
 
 -- --------------------------------------------------------

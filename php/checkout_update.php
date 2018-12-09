@@ -13,7 +13,7 @@ if (isset($_POST["crt_ln"]))
         VALUES
         (" . $row2["crt_ln"] .", '$ord_num' , " . $row2["prod_id"] ." , " . $row2["ord_qty"] .", $subtotal);";   
 
-        print "<h4>Succesfully added product to the order history!</h4>";       
+     //   print "<h4>Succesfully added product to the order history!</h4>";       
    
         if (!mysqli_query($mysqli, $query)) {
         printf("Errormessage: %s\n", $mysqli->error);
@@ -34,7 +34,8 @@ if (isset($_POST["adr_ln_1"]) || isset($_POST["adr_ln_2"]) || isset($_POST["pstc
    
     $query2 = "INSERT INTO customer_order (ord_num, usr_id, ord_dte, sts, price_sum, adr_ln_1, adr_ln_2, pstcod)
     VALUES('".$row["ord_num"]."', ".(int)$_SESSION["users"]["usr_id"].", NOW(), 'ORDERED', $total, '".$_POST["adr_ln_1"]."', '".$_POST["adr_ln_2"]."', '".$_POST["pstcod"]."' );";     
-      print "<h4>The order was added to your order history!</h4>";   
+
+ 
         
         if (!mysqli_query($mysqli, $query2)) {
         printf("Errormessage: %s\n", $mysqli->error);
@@ -42,10 +43,12 @@ if (isset($_POST["adr_ln_1"]) || isset($_POST["adr_ln_2"]) || isset($_POST["pstc
         
         
     }
-
+    
   
  $query3 = "DELETE FROM cart_tmp WHERE crt_id = ".(int)$_SESSION["users"]["usr_id"].";"; 
  mysqli_query($mysqli, $query3);
-
+ 
+ include_once "user_orders.php"; 
+     print "<h4>The order was added to your order history!</h4>";  
  }  
-    include "user_orders.php"; 
+

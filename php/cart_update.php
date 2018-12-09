@@ -109,54 +109,58 @@ if (isset($_POST["ord_qty"]))
  
 
       
-<div class="row-stock">
-  <div class="column" style="background-color:#aaa;">
-      <?php print '<div class="category-img"><img alt="product example" src=" ' .$row["cat_img"]. ' "></div>'; ?>
-   
-  </div>
-  <div class="column two" style="background-color:#bbb;">
-    <p><?php echo $row["prod_name"]?></p>
-   
-  </div>
-  <div class="column" style="background-color:#ccc;">
-    <p>Qty: </p>
- 
-  </div>
-<form action="?page=cart_update" method="post" enctype="multipart/form-data">       
-  <div class="column" style="background-color:#ddd;">
-   
- 
-    <input name="ord_qty" type="text" value="<?php echo $row["ord_qty"]?>" >  
-  </div>  
-  <div class="column unit" style="background-color:#bbb;">
-   
-    <p>Value: </p>
-  </div>
-  <div class="column" style="background-color:#ccc;">
-    <p>&pound<?php echo $row["price"]?></p>
-  </div>
-  <div class="column unit" style="background-color:#bbb;">
-    <p>Subtotal: </p>
-  </div>   
-   <div class="column" style="background-color:#ccc;">
-    <p>&pound<?php echo $subtotal; ?></p>
-  </div>     
-      
-  <div class="column three" style="background-color:#ddd;">     
-  <input name="prod_id" type="hidden" value="<?php echo $row["prod_id"]?>" >      
-  <button type="submit" name="submit" class="btn-cart">Update</button> 
+               <div class="cart-row">
+                    <div class="row">
+                        <div class="col-lg-1 col-md-3 col-xs-2 " >
+                            <?php print '<div class="category-img"><img alt="product example" src=" ' . $row["cat_img"] . ' "></div>'; ?>
+                        </div>
 
-<?php   
-    print '<div class="btn-cart">
+                        <div class="col-lg-2 col-md-3 col-xs-2 four" >
+                            <p><?php echo $row["prod_name"] ?></p>
+                        </div>
+
+                        <div class="col-lg-1 col-md-3 col-xs-2" >
+                            <p>Qty: </p>
+                        </div>
+
+                        <form action="?page=cart_update" method="post" enctype="multipart/form-data">       
+
+                            <div class="col-lg-1 col-md-3 col-xs-2" >
+                                <input name="ord_qty" type="text" value="<?php echo $row["ord_qty"] ?>" >  
+                            </div>
+
+                            <div class="col-lg-1 col-md-3 col-xs-2" >
+                                <p>Value: </p>
+                            </div>
+
+                            <div class="col-lg-1 col-md-3 col-xs-2" >
+                                <p>&pound<?php echo $row["price"] ?></p>
+                            </div>
+
+                            <div class="col-lg-1 col-md-3 col-xs-2" >
+                                <p>Subtotal: </p>
+                            </div> 
+
+                            <div class="col-lg-1 col-md-3 col-xs-2" >
+                                <p>&pound<?php echo $subtotal; ?></p>
+                            </div>     
+
+                            <div class="col-lg-1 col-md-3 col-xs-2" >
+                                <input name="prod_id" type="hidden" value="<?php echo $row["prod_id"] ?>" >      
+                                <button type="submit" name="submit" class="btn-cart">Update</button> 
+                            </div>
+
+                            <div class="col-lg-1 col-md-3 col-xs-2s five" >
+                                <?php
+                                print '<div class="btn-remove">
          
-    <a href="?page=cart_update&prod_id=' . $row["prod_id"] . '&action=remove">Remove</a></div> ';  
-      
-?>      
-      
-  </div>  
-</form>  
-</div>
-      
+    <a href="?page=cart_update&prod_id=' . $row["prod_id"] . '&action=remove">X</a></div> ';
+                                ?>         
+
+                            </div>  
+                        </form> 
+                    </div>
+                </div>
       
 
 <?php 
@@ -166,22 +170,17 @@ if (isset($_POST["ord_qty"]))
 
 
 ?>
-    <hr>
-    <p class="total"><span class="price" style="color:black">Total Value:
-                <b>&pound<?php echo $total; ?></b></span></p>   
-      
-    <br>
-<?php   
-    print '<div class="btn-checkout">
+           <hr>
+            <p class="total"><span class="price" style="color:black">Total Value:
+                    <b>&pound<?php echo $total; ?></b></span></p>   
+
+            <br>
+            <?php
+            print '<div class="btn-checkout">
          
-    <a href="?page=checkout&crt_ln=' . $row["crt_ln"] . '&action=checkout">Proceed to Checkout</a></div> ';  
-      
-?>     
-    </div>
-
-
-
-</body>
+    <a href="?page=checkout&crt_ln=' . $row["crt_ln"] . '&action=checkout">Proceed to Checkout</a></div> ';
+            ?>     
+        </div>
+    </body>
 </html>
-
 
