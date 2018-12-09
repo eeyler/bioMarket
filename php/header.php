@@ -18,7 +18,7 @@
 
       <div class='icons'>
         <!-- Logo  -->
-        <div id="logo">
+        <div class="logo">
           <a href="?page=home"><img id='logo' src="img/logo_colour.png" /></a>
           <a href="?page=home"><img id='logo-toggle' src="img/logo_colour_toggle.png" /></a> 
         </div>
@@ -32,7 +32,7 @@
       </div>
 
       <!-- Navbar -->
-      <div class='sub-top-menu'>
+      <div id='top-menu'>
         <ul class="top-menu">
           <li class="current"><a href="?page=home"><img class='menu-logo' src="img/home.svg" /> Home</a></li>
           <li><a href="?page=products_bakery"><img class='menu-logo' src="img/bread.svg" /> Bakery</a></li>
