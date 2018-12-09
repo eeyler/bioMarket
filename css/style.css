@@ -15,10 +15,10 @@ html {
 
 body {
     zoom: 0.8;
-    -moz-transform:  scale(1);
-    -moz-transform: zoom(0.8);
-    -moz-transform-origin:  50 50;
-    max-width: 75%;
+    -moz-transform:  scale(0.8);
+   /* -moz-transform: zoom(0.8);*/
+    -moz-transform-origin:  top;
+    /*max-width: 75%;*/
     margin: 0 auto;
 }
 
