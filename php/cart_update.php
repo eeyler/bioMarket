@@ -12,6 +12,7 @@
 <div class="container-cart">
       <h2>Your Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i></span></h2>
 <?php
+$message = '';
  // Delete Product from the cart    
 if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "remove") {
     
@@ -31,7 +32,7 @@ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "remove") {
     
     $search = "DELETE FROM cart_tmp WHERE prod_id = ".(int)$_REQUEST["prod_id"]." AND crt_id =  ".(int)$_SESSION["users"]["usr_id"]." ";
     mysqli_query($mysqli, $search);
-    
+    $message = 'The Product was removed from your Cart!';
      
 }
 if (isset($_POST["prod_id"]))
@@ -47,12 +48,12 @@ if (isset($_POST["ord_qty"]))
     {
 	if (($_POST["ord_qty"] == 0 ) || ($_POST["ord_qty"] == "0"))
 	{
-
-                print "<h4>Enter the requested quantity!</h4>";
+                $message = 'Enter the requested quantity!';
+            //    print "<h4>Enter the requested quantity!</h4>";
 	}
 	elseif ($_POST["ord_qty"] > ($row["ord_qty"] + $row1["sto_qty"])) { 
-            
-                print "<h4>Sorry, but the product is not avaiable in the requested quantity!</h4>";
+            $message = 'Sorry, but the Product is not avaiable in the requested quantity!';
+          // print "<h4>Sorry, but the product is not avaiable in the requested quantity!</h4>";
         } else {      
         $search = "SELECT * FROM cart_tmp WHERE crt_id =  ".(int)$_SESSION["users"]["usr_id"]." AND prod_id = '" . $_POST["prod_id"] . "' ";
         $result = mysqli_query($mysqli, $search);
@@ -65,8 +66,8 @@ if (isset($_POST["ord_qty"]))
             // Update the Product Quantaty in the Cart
             $search = "UPDATE cart_tmp SET ord_qty =  '" . $_POST["ord_qty"] . "'  WHERE prod_id =   '" . $_POST["prod_id"] . "' AND crt_id =  ".(int)$_SESSION["users"]["usr_id"]." ";
             mysqli_query($mysqli, $search);     
-               
-            print "<h4>The Cart was Updated! </h4>";                           
+            $message = 'The Product quantity was updated in your Cart!';
+          //  print "<h4>The Cart was Updated! </h4>";                           
             }  
         }
 
@@ -179,6 +180,7 @@ if (isset($_POST["ord_qty"]))
             print '<div class="btn-checkout">
          
     <a href="?page=checkout&crt_ln=' . $row["crt_ln"] . '&action=checkout">Proceed to Checkout</a></div> ';
+            print "<h4>$message</h4>";
             ?>     
         </div>
     </body>

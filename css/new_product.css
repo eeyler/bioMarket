@@ -5,12 +5,12 @@
    vertical-align: middle;
    text-align: left;
 }
-.right {
-    width: 300px;
-   
+.right { font-size: 20px; padding-top: 40px; }
+.right p { font-size: 20px; }
+    
+.left {
+      width: 600px;  
 }
-
-
 .acp-add-prod-wrap {
     width: 100%;
     overflow: hidden;
@@ -32,6 +32,7 @@
     border-radius: 10px;
     border: 1px solid silver;
     padding: 5px;
+   
 
 }
 .acp-add-prod-wrap form {
@@ -45,31 +46,62 @@
 
 }
 .product { text-align: middle; }
+.quantity input {width: 230px;}
+option {font-size: 20px;}
 .acp-add-prod-wrap:after {
     content: "";
     display: table;
     clear: both;
 }
+.btn-add, .btn-add-stock {
+    text-align: center;
+    padding : 2px;
+    width: 130px;
+    height: 30px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius:3px;
+    border:0;
+    font-size: 20px;
+
+}
+.btn-add-stock { width: 250px; }
+.btn-add:hover, .btn-add-stock:hover  {
+    background-color: rgb(52, 152, 219, 0.8);
+    border-radius: 10px;
+    font-size: 23px;
+    font-weight: bold;
+    padding: 0px;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+}
 
 
 /* Fake image, just for this example */
-.fakeimg, .img input{
-    max-width: 304px;
-    height: 304px;
+.fakeimg{
+    max-width: 354px;
+    height: 354px;
     border-radius: 10px;
-    margin: 20px 0;
+    margin: 40px 0 20px 80px;
     border: 2px solid gray;
     
 }
 .fakeimg > p{ text-align: center; margin-top: 146px; }
-.img input{
-    max-width: 200px;
-    height: 40px;
-    margin: 5px;
+.img > input{
+    max-width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 40px 0 40px 80px;
+    border: 2px solid gray;
+    padding: 0;
+  
+    
 }
 .fakeimg img{ 
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     border-radius: 10px;
    
 }

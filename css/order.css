@@ -62,7 +62,30 @@ hr {
     width: 90%;
  
 }
+.btn-sts {
+    text-align: center;
+    padding : 2px;
+    width: 130px;
+    height: 30px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius:3px;
+    border:0;
+    font-size: 20px;
+    float: right;
 
+}
+.btn-sts:hover  {
+    background-color: rgb(52, 152, 219, 0.8);
+    border-radius: 10px;
+    font-size: 23px;
+    font-weight: bold;
+    padding: 0px;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+}
 .btn-paypal { width: 400px; float: right; }
 /* Responsive layout - makes the four columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {

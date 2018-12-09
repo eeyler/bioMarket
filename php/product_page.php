@@ -50,15 +50,15 @@ include "user_panel_connection.php";
     <p>Available: <?php echo $row["sto_qty"]?></p>
   </div>
    
-    <div class="product">
-        <p>Quantity: </p><input type="text" placeholder="Enter Required Quantity" name="ord_qty" >
+    <div class="product quantity">
+    <p>Quantity: <input type="text" placeholder="Enter Required Quantity" name="ord_qty" ></p>
   </div>   
     
      
     <!-- Hidden Input area to call in the value for the prod_id primary key -->     
     <input name="prod_id" type="hidden" value="<?php echo $row["prod_id"]?>" >  
  <!--      <button type="submit" name="submit" class="btn-login">Add to Cart</button>-->
-   <input name="add_to_cart" type="submit" value="Add to Cart">  
+ <input name="add_to_cart" type="submit" value="Add to Cart" class="btn-add">  
   </div>  
     
  

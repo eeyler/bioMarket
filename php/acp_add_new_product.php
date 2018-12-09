@@ -16,7 +16,7 @@
   <div class="side left">   
       <div class="fakeimg"><p>IMAGE OF PRODUCT</p></div>   
     
-     <div class="img"><input type="file" name="prod_img" required></div> 
+     <div class="img"> <input type="file" name="prod_img" required></div> 
   </div>
      
  <div class="side right">
@@ -24,37 +24,37 @@
     <input type="text" placeholder="Enter product name" name="prod_name" required>
   </div>    
   <div class="product">
-    <p>Product Category:</p>
+    <p>Product Category:   
     <select name="cat_id" required aria-required="true">
-        <option value="">Choose Category</option> 
+        <option value="" >Choose Category     </option> 
         <option value="1">Bakery</option>  
         <option value="2">Drink</option>       
         <option value="3">Vegetables</option>
         <option value="4">Dairy</option>
-    </select>
+    </select></p>
   </div>     
-  <div class="product">
-    <p>Price: &pound</p><input type="number" placeholder="Enter product price" name="price" step="0.01" required>
+  <div class="product quantity">
+    <p>Price: &pound   <input type="number" placeholder="Enter product price" name="price" step="0.01" required></p>
   </div>
   <div class="product">
-    <p>Supplier: </p>
-    <select name="sup_id" required aria-required="true">
-        <option value="" >Choose Supplier</option>  
+    <p>Supplier:   
+        <select name="sup_id" required aria-required="true">
+        <option value="" >Choose Supplier  </option>  
         <option value="1">Real Bakery</option>  
         <option value="2">Organic Drink Corp</option>       
         <option value="3">Fresh Veggie</option>
         <option value="4">Happy Cows Dairy</option>
-    </select>
+    </select></p>
   </div>      
      
   <div class="product">
     <p>Description of the Product:</p>
     <textarea  placeholder="Enter Product Description" name="prod_dsc" maxlength="255" required></textarea>
   </div>
-  <div class="product">
-    <p>Quantity:</p><input type="number" placeholder="Enter stock quantity" name="sto_qty" required>
+  <div class="product quantity">
+    <p>Quantity:  <input type="number" placeholder="Enter stock quantity" name="sto_qty" required></p>
   </div>
-  <button type="submit" name="submit" class="btn-login">Add Product To Stock</button>
+  <button type="submit" name="submit" class="btn-add-stock">Add Product To Stock</button>
   </div>  
 </div>
   

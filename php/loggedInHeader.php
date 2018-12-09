@@ -19,7 +19,7 @@
         <!-- / Logo  -->
         <!-- cart  -->
         <div class="cart-icon">
-          <a title='BASKET' href="#"> <i class="fa fa-shopping-basket fa-3x"></i></a>
+          <a title='BASKET' href="?page=cart"> <i class="fa fa-shopping-basket fa-3x"></i></a>
         </div>
         <!-- / cart  -->
       </div>

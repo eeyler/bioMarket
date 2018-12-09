@@ -14,10 +14,7 @@
       <h2>Customer Orders:</h2>  
    
  <?php 
-
- 
- 
-    $search0 = "SELECT * FROM customer_order AS co LEFT JOIN users u ON co.usr_id = u.usr_id ORDER BY co.price_sum DESC";
+    $search0 = "SELECT * FROM customer_order AS co LEFT JOIN users u ON co.usr_id = u.usr_id ORDER BY co.ord_dte DESC";
     $result0 = mysqli_query($mysqli, $search0);
             while ($row0 = mysqli_fetch_assoc($result0))
             {     
@@ -106,7 +103,12 @@
 <?php 
                 }
 
-
+        print '<div class="btn-sts">
+         
+    <a href="?page=acp_customer_order_sts&ord_num='  .$cur_ord_num. ' &action=sts_shipped">SHIPPED</a></div> ';
+        print '<div class="btn-sts">
+         
+    <a href="?page=acp_customer_order_sts&ord_num=' .$cur_ord_num. '&action=sts_delivered">DELIVERED</a></div> ';  
 ?>  
       
       
