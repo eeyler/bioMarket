@@ -92,7 +92,7 @@
     display: table;
     clear: both;
 }
-.header { background-color: #ccc; font-size: 20px;}
+.header { background-color: gray; font-size: 20px;}
 .btn-supplier  {
     text-align: center;
     padding : 2px;

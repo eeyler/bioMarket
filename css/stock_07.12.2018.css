@@ -12,17 +12,21 @@
    text-align: left;
    font-size: 20px;
 }
-.customer-column { 
+.customer-column, .customer-column2 { 
+ 
   background-color: #fff;
   margin: 5px 0;
  
   border: 1px solid lightgrey;
   border-radius: 10px; 
 }
+.customer-column2 {  background-color: gray;}
+
 .column input {background-color: #fff; text-align: right; width: 40px;}
 .two { width: 40%; }
 
-.two-stock {width: 40%;}
+.two-stock {width: 40%; }
+
 .three { width: 23%; }       
 .unit{
     width: 6%;
@@ -30,6 +34,14 @@
 }
 .unit2{    
     width: 12%;
+    text-align: left;
+}
+.unit3{    
+    width: 15%;
+    text-align: center;
+}
+.two-stock2{    
+    width: 35%;
     text-align: left;
 }
 .btn-add, .btn-details, .btn-checkout,
