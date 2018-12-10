@@ -96,7 +96,7 @@ p .forgot-password {
 /*css for button resetpasword form*/
 /*css for button resetpasword form*/
 
-.btn-resetpassword {
+.btn-resetpassword, .btn-backtoshop {
     padding : 5px;
     width: 130px;
     height: 30px;
@@ -106,7 +106,8 @@ p .forgot-password {
     border:0;
     font-size: 18px;
 }
-.btn-resetpassword:hover{
+.btn-backtoshop {   width: 230px;    text-align: center; }
+.btn-resetpassword:hover, .btn-backtoshop:hover {
     background-color: rgb(52, 152, 219, 0.8);
     border-radius: 10px;
     font-size: 20px;
@@ -162,7 +163,7 @@ p .forgot-password {
     -o-transition: all .2s ease;
     transition: all .2s ease;
 }
-
+.pay-conf {text-align: center; vertical-align: middle; }
 
 @media (max-width: 600px) {
     .form-wrap {

@@ -101,14 +101,52 @@
         </div>
     </div> 
 <?php 
+     // Update Customer Order Status  to delivered      
+    $search = "SELECT * FROM customer_order WHERE ord_num = '$cur_ord_num' ";
+    $result = mysqli_query($mysqli, $search); 
+    $temp_row2 = mysqli_fetch_assoc($result);
+   
+
                 }
 
-        print '<div class="btn-sts">
+ 
+        print '<div class="btn-status">
+    <div class="btn-sts">
          
-    <a href="?page=acp_customer_order_sts&ord_num='  .$cur_ord_num. ' &action=sts_shipped">SHIPPED</a></div> ';
-        print '<div class="btn-sts">
+    <a href="?page=acp_customers_orders_sts&ord_num='  .$temp_row2['ord_num']. ' &action=shipped">Shipped</a></div> 
+    <div class="btn-sts">  
          
-    <a href="?page=acp_customer_order_sts&ord_num=' .$cur_ord_num. '&action=sts_delivered">DELIVERED</a></div> ';  
+    <a href="?page=acp_customers_orders_sts&ord_num=' .$temp_row2['ord_num']. '&action=delivered">Delivered</a></div> </div> ';  
+ /* 
+ // Update Customer Order Status     
+ if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "shipped") {
+ 
+    $ord_num = $_REQUEST["ord_num"];
+    $search = "UPDATE customer_order co SET co.sts = 'SHIPPED' WHERE co.ord_num = '$ord_num' ";
+    mysqli_query($mysqli, $search);
+    
+
+    include_once 'acp_customers_orders.php';  
+    
+}      
+      
+        
+  if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "delivered") {
+ 
+    $ord_num = $_REQUEST["ord_num"];
+    $search = "UPDATE customer_order co SET co.sts = 'DELIVERED' WHERE co.ord_num = '$ord_num' ";
+    mysqli_query($mysqli, $search);
+    
+    
+
+   include_once 'acp_customers_orders.php';   
+  
+}
+  
+ 
+*/
+ 
+ 
 ?>  
       
       
@@ -118,7 +156,7 @@
 <?php 
            
  }
-
+    
 ?>  
      
    

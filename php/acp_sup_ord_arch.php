@@ -17,109 +17,152 @@
 	$user = '5';
         
 include "admin_panel_connection.php";	
-
-	echo	
-			"<table>
-			<tr>
-                        <td>
-			<form action='?page=acp_sup_ord_main' method = 'post'>                      
-
-			<input type='submit' value='GO TO SUPPLIER ORDER CREATION'>
-			</form>
-			</td>
-			<td>
-			<form action='?page=acp_sup_ord_view' method = 'post'>
-			<input type='submit' value='GO TO ORDER VIEW'>
-			</form>
-			</td>
-
-			</tr>
-
-			</table>";
-	
-	
-
+?>
+<div class="container"> 
+<h2>Supplier Orders | Order Archives</h2>         
+<div class="row2">
+    
+    <div class="title main2">	
+         <form action='?page=acp_sup_ord_main' method = 'post'>  
+            <input type='submit' value='Go to Supplier Order Creation'>
+        </form>
+    </div>
+    <div class="title main">			
+        <form action='?page=acp_sup_ord_view' method = 'post'>                     
+           <input type='submit' value='Go to Order View'>
+        </form>  
+    </div>  
+</div>
+<h2>Archive</h2> 
 		
+<?php
+        $search = "SELECT * FROM supplier_ord WHERE sts = 'CLOSED' ORDER BY supplier_ord.sup_ord_id";
+        $result = mysqli_query($mysqli, $search);        
+?>
 
-	echo "<h1>ARCHIVE</h1>";
+<div class="row header">
+  <div class="column cname">
+    <h4>Supplier Order Id</h4>
+   </div>
+  <div class="column cname">
+    <h4>Status</h4>      
+  </div>
+  <div class="column cname">
+    <h4>Date Created</h4>
+  </div>
+  <div class="column cname">
+    <h4>Total Value</h4>
+  </div>
+  <div class="column cname">
+    <h4>Details</h4>
+  </div>
 
-		
-	
-		$search = "SELECT * FROM supplier_ord WHERE sts = 'CLOSED' ORDER BY supplier_ord.sup_ord_id";
-		$result = mysqli_query($mysqli, $search);        
-		
-		echo "<h2>Supplier Orders</h2>";
-		echo "<table>";
-		echo "<tr>
-		<td>Supplier Order Id</td>
-		<td>Status</td>
-		<td>Date Created</td>
-		<td>Total Value</td>
-		<td>Details</td>
-		</tr>";
 
+</div>  
+
+
+<?php
 		while ($row = mysqli_fetch_assoc($result))
 		{
-		echo "<tr>
-		<td>{$row['sup_ord_id']}</td>
-		<td>{$row['sts']}</td>
-		<td>{$row['ord_dte']}</td>
-		<td>{$row['price_sum']}</td>
-		<td><form action='?page=acp_sup_ord_arch' method = 'post'>   
+                    
+?>
 
-			<input type = 'hidden'  name ='sup_ord_id1' value = {$row['sup_ord_id']}>
-			<input type='submit' value='Details'>
-			</form></td>
-		</tr>";
-	
 
-		}
-			echo"</table>";
+<div class="row">
+  <div class="column cname">
+    <?php echo $row["sup_ord_id"]; ?>
+  </div>
+  <div class="column cname">
+      <?php echo $row["sts"]; ?>
+  </div>
+  <div class="column cname">  
+    <?php echo $row["ord_dte"]; ?>
+  </div>
+  <div class="column cname">
+    <?php echo $row["price_sum"]; ?>    
+  </div>
+<?php    
+    
+  echo " <div class= 'column cname'>
+    <form action='?page=acp_sup_ord_arch' method = 'post'>   
+        <input type = 'hidden'  name ='sup_ord_id1' value = {$row['sup_ord_id']}>
+        <input type='submit' value='Details' class='btn-suppclear'>
+    </form></div>";
+        
+        
+        
+?>
 
+</div>
+
+<?php
+}
 	
+    if (isset($_POST["sup_ord_id1"]))
+    {
+			
 	
-	if (isset($_POST["sup_ord_id1"]))
-		{
+    $cri = $_POST["sup_ord_id1"];
+    $search1 = "SELECT * FROM supplier_ord_ln WHERE sup_ord_id = '$cri' ORDER BY sup_ord_ln";		
+    $result1 = mysqli_query($mysqli, $search1);	
+  
+    
+    echo "<h2>Supplier Order Lines</h2>";
+    echo "<h4>Detail for Order: ".$_POST["sup_ord_id1"]."</h4>";    
+    
+?>	
+		
+<div class="row header">
+  <div class="column cname">
+    <h4>Supplier Order Line</h4>
+   </div>
+  <div class="column cname">
+    <h4>Supplier Order Number</h4>      
+  </div>
+  <div class="column cname">
+    <h4>Order Quantity</h4>
+  </div>
+  <div class="column cname">
+    <h4>Product Id</h4>
+  </div>
+  <div class="column cname">
+    <h4>Price</h4>
+  </div>
+</div>                         
+<?php
+
+        while ($row = mysqli_fetch_assoc($result1))
+        {
+?>  
+ <div class="row">
+  <div class="column cname">
+    <?php echo $row["sup_ord_ln"]; ?>
+  </div>
+  <div class="column cname">
+      <?php echo $row["sup_ord_id"]; ?>
+  </div>
+  <div class="column cname">  
+    <?php echo $row["ord_qty"]; ?>
+  </div>
+  <div class="column cname">
+    <?php echo $row["prod_id"]; ?>    
+  </div>     
+  <div class="column cname">
+    <?php echo $row["price"]; ?>    
+  </div>   
+</div>
+    
+<?php
+        }
+			
+
+		
+	
+}
+		
 			
 			
 		
-// display of tmp table 
-			$cri = $_POST["sup_ord_id1"];
-			$search1 = "SELECT * FROM supplier_ord_ln WHERE sup_ord_id = '$cri' ORDER BY sup_ord_ln";
-			#echo "<h1>'$search1'</h1>";
-			
-			$result1 = mysqli_query($mysqli, $search1);
-			echo "<h2>SUPPLIER ORDER LINES</h2>";
-			echo "<p> DETAILS FOR ORDER: ".$_POST["sup_ord_id1"]."</p>";
-			echo "<table>";
-			echo "<tr>
-			<td>Supplier Order Line</td>
-			<td>Supplier Order Number</td>
-			<td>Order Quantity</td>
-			<td>Product Id</td>
-			<td>Price</td>
-			</tr>";
-
-			while ($row = mysqli_fetch_assoc($result1))
-			{
-			echo "<tr>
-			<td>{$row['sup_ord_ln']}</td>
-			<td>{$row['sup_ord_id']}</td>
-			<td>{$row['ord_qty']}</td>
-			<td>{$row['prod_id']}</td>
-			<td>{$row['price']}</td>
-			</tr>";
-
-			}
-			echo"</table>";
-
-		
-	
-		};
-		
-			
-			
-		
 	
 	
-		?>
+	

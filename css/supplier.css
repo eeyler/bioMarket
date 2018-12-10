@@ -1,18 +1,149 @@
-table, th, td {
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 10px;
- 
-}
-.btn-details{ width: 200px; float: left; margin: 0 12px; }
+* { box-sizing: border-box; }
 
-.btn-details:hover {
-    background-color: gray;
+.container {
+  background-color: #f2f2f2;
+  padding: 0px 20px 10px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.row {
+
+    width: border-box;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #ddd;
+    font-size: 18px;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+        
+    
+}
+.title input{   
+    background-color: #ddd;
+    float: left;
+    width: 25%;
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 18px;
+    width: border-box;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+   }
+.main {    margin: 15px; width: 50%; }   
+.main:after { clear: both;}
+.main2 {    margin: 15px; width: 80%; }   
+/* Create four equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 9%;
+    padding: 8px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 18px;
+ 
+   
+}
+.column input {     
+    background-color: #fff;   
+    vertical-align: middle;
+    text-align: center;
+    font-size: 18px;
+    margin: 0 20px;
+   
+}
+/*
+.row2 {
+    width: 100%; 
+    background-color: #ddd;
+    text-align: left; 
+
+   padding: 0px 20px 10px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+}*/
+
+.cname{   width: 18%; text-align: left; }
+.dsc {   width: 34%; text-align: left; }
+.price { width: 5%; }
+.sup { width: 8%; }
+.item form { width: 260px; text-align: center;   font-size: 18px; }
+ input.btn-supplier  {
+     width: 110px; 
+    font-size: 18px;
+     background-color: #3498db;
+     text-align: center;
+     padding: 2px;
+     display: inline;
+
+ }
+ .long {  width: 380px; float: right;}
+
+.qty { width: 5%; float: right;}
+.qytinp {width: 60px; float: left; }
+/* Clear floats after the columns */
+.row:after, .row2:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.header { background-color: #ccc; font-size: 20px;}
+.btn-supplier  {
+    text-align: center;
+    padding : 2px;
+    width: 130px;
+    height: 30px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 3px;
+    border:0;
+    font-size: 18px;
+    float: right;
+
+}
+input.btn-suppdel, input.btn-suppclear  {
+     width: 90px; 
+      color: #fff;
+     background-color: #3498db;
+     text-align: center;
+     padding: 2px;
+     display: block;
+    float: right; 
+    margin: 0 10px 0;
+      border-radius: 3px; 
+   font-size: 18px;
+}
+input.btn-suppclear  {
+     width: 130px; }
+.btn-supplier:hover,  input.btn-supplier:hover, 
+input.btn-suppdel:hover, input.btn-suppclear:hover  {
+    background-color: rgb(52, 152, 219, 0.8);
     border-radius: 10px;
     font-size: 18px;
     font-weight: bold;
+    padding: 0px;
     -webkit-transition: all .2s ease;
     -moz-transition: all .2s ease;
     -o-transition: all .2s ease;
-    transition: all .2s ease;
+    transition: all .2s ease; 
+    
+}
+ 
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+    .column  {
+        width: 50%;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column  {
+        width: 100%;
+    }
 }

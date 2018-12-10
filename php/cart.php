@@ -140,11 +140,20 @@
 
             <br>
             <?php
- 
+        $search = "SELECT * FROM cart_tmp WHERE crt_id =  " . (int) $_SESSION["users"]["usr_id"] . " ";
+        $result3 = mysqli_query($mysqli, $search);
+        $row3 = mysqli_fetch_assoc($result3);
+        if ($row3["crt_id"] == $_SESSION["users"]["usr_id"] ){
+                
+          
+            
+            
             print '<div class="btn-checkout">
          
     <a href="?page=checkout&crt_ln=' . $row["crt_ln"] . '&action=checkout">Proceed to Checkout</a></div> ';
             print "<h4>$message</h4>";
+            
+              }
             ?>     
         </div>
     </body>

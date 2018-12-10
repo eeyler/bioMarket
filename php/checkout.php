@@ -9,16 +9,15 @@
     $page_title = 'BioMarket | Checkout';
     include_once "user_panel_connection.php"; 
     
-    if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "checkout") {
-    
-        
+    if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "checkout" ) {
+
     
    $search = "SELECT * FROM products, cart_tmp, category, users WHERE users.usr_id = " . (int) $_SESSION["users"]["usr_id"] . " AND cart_tmp.crt_id = users.usr_id AND products.prod_id = cart_tmp.prod_id AND products.cat_id = category.cat_id";
    $result = mysqli_query($mysqli, $search);  
    
    
 ?>
-<form action="?page=checkout_update" method="post" enctype="multipart/form-data">       
+<form action="?page=payment" method="post" enctype="multipart/form-data">       
 <div class="container-cart">
     
     <h2>Checkout</h2>
@@ -102,7 +101,7 @@ $row2 = mysqli_fetch_assoc($result);
  
 <div class="row">
 <div class="col-lg-6 col-sm-12 col-xs-12 cart-row">
-    <h4>Confirm Delivery Date and Time:</h4> 
+    <h4>Delivery Date and Time:</h4> 
 
 
     <div class="col-lg-7 col-md-3 col-xs-6" >
@@ -132,7 +131,8 @@ $row2 = mysqli_fetch_assoc($result);
 </form> 
   <?php    
     }
-
+ 
+    
 ?> 
 </body>
 </html>
