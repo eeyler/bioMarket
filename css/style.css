@@ -481,16 +481,15 @@ a:visited {
 
     /*======= categories =========*/
     .category-section {
-        max-width: 1500px;
-        /*  height: ;*/
-        margin: auto;
-        background-color: rgb(242, 242, 242, 0.8);
-        margin-top: 10px;
-        padding: 10px;
-        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.08);
-        border-radius: 10px;
-        position: relative;
-        overflow: hidden;
+    max-width: 1500px;
+    position: relative;
+    margin: 10px auto auto auto;
+    padding: 10px 10px 150px 10px;
+    background-color: rgb(242, 242, 242, 0.8);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+ 
     }
 
     @media (max-width: 1100px) {
