@@ -87,17 +87,14 @@ if (isset($_POST['submit'])) {
     
   <!-- Hidden Input area to call in the value for the prod_id primary key -->     
   <input name="prod_id" type="hidden" value="<?php echo $row["prod_id"]?>" > 
-  <input name="confirm" type="submit" value="Confirm Product Details">  
-  
- <!-- 
-  <button type="submit" name="submit" class="btn-login">Change Product Details</button> -->
-  
+  <button name="confirm" type="submit" class="btn-conf-details">Confirm Product Details</button>  
+
   </div>
 
-</form>
+
  
 </div>
-
+</form>
  </body>                  
                   
                   

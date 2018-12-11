@@ -88,7 +88,8 @@
 .btn-checkout a{ color: #FFFFFF;}
 /*.btn-chp { position: relative; margin: 80px auto 25px;  }*/
 .btn-cart, .btn-details{ width: 100px; float: left; margin: 0 12px; }
-.btn-new-prod { position: relative; margin: 25px 40px 25px auto; width: 250px; vertical-align: left; }
+.btn-new-prod { position: relative; margin: 25px 40px 25px auto; width: 250px; text-align: center; }
+.btn-new-prod a, .btn-details a { color: #fff;}
 .btn-add:hover, .btn-details:hover, .btn-checkout:hover,
 .btn-cart:hover,.btn-new-prod:hover {
     background-color: rgb(52, 152, 219, 0.8);
@@ -125,11 +126,12 @@
     position: relative;
     overflow: hidden;
 }
+.field input { width: 60px;  border: 1px solid silver; border-radius: 8px; text-align: center; }
 /* confirm address */
 .container-checkout.col2 {width: 100%;}
 .column-check label {
- display: block;
-     font-size: 18px;
+    display: block;
+    font-size: 18px;
 }
 .column-check input{ 
     width: 520px;

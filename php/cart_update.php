@@ -126,7 +126,7 @@ if (isset($_POST["ord_qty"]))
 
                         <form action="?page=cart_update" method="post" enctype="multipart/form-data">       
 
-                            <div class="col-lg-1 col-md-3 col-xs-2" >
+                            <div class="col-lg-1 col-md-3 col-xs-2 field" >
                                 <input name="ord_qty" type="text" value="<?php echo $row["ord_qty"] ?>" >  
                             </div>
 

@@ -61,8 +61,8 @@ VALUES
 		}
 		else
 		{
-                    print "<h4>The Passwords are not identical!</h4>";
-                   
+              //      print "<h4>The Passwords are not identical!</h4>";
+                
                 }    	
                 
         }

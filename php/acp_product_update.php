@@ -63,7 +63,7 @@ if ((isset($_POST["prod_id"])) || (isset($_POST["cat_id"])) || (isset($_POST["su
     
   <!-- Hidden Input area to call in the value for the prod_id primary key   -->
   <input name="prod_id" type="hidden" value="<?php echo $row["prod_id"]; ?>" > 
-  <input name="confirm" type="submit" value="Confirm Product Details"> 
+  <button name="confirm" type="submit" class="btn-conf-details">Confirm Product Details</button>  
 
 
   

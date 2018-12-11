@@ -79,9 +79,8 @@ hr {
     font-size: 20px;
     float: right;
     margin: 25px 10px 15px;
-  
-
 }
+.btn-sts a { color: #fff; }
 .btn-sts:hover  {
     background-color: rgb(52, 152, 219, 0.8);
     border-radius: 10px;

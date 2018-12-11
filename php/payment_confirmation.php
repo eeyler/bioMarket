@@ -83,8 +83,10 @@ if (isset($_POST["adr_ln_1"]) || isset($_POST["adr_ln_2"]) || isset($_POST["pstc
 <body>
   <div class="form-wrap pay-conf">
     <h2>Your order is completed</h2>
+    <br>
         <h4>Your order is completed, you will receive a confirmation email shortly with all your order informaton.</h4>
         <h4>Thank You for shopping with us !</h4>
+    <br>    
     <a href="?page=home"><div class="btn-backtoshop">BACK TO SHOPPING</div></a>
 
   </div>

@@ -45,15 +45,15 @@
     height: 300px;
 
 }
-.product { text-align: middle; }
+
 .quantity input {width: 230px;}
-option {font-size: 20px;}
+.option {font-size: 20px;}
 .acp-add-prod-wrap:after {
     content: "";
     display: table;
     clear: both;
 }
-.btn-add, .btn-add-stock {
+.btn-add, .btn-add-stock, .btn-conf-details {
     text-align: center;
     padding : 2px;
     width: 130px;
@@ -61,12 +61,13 @@ option {font-size: 20px;}
     background-color: #3498db;
     color: #fff;
     border-radius:3px;
-    border:0;
+    border: 0;
     font-size: 20px;
 
 }
 .btn-add-stock { width: 250px; }
-.btn-add:hover, .btn-add-stock:hover  {
+.btn-conf-details { width: 320px; }
+.btn-add:hover, .btn-add-stock:hover, .btn-conf-details:hover  {
     background-color: rgb(52, 152, 219, 0.8);
     border-radius: 10px;
     font-size: 23px;

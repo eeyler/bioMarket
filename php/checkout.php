@@ -98,10 +98,10 @@ $row2 = mysqli_fetch_assoc($result);
 </div>
 </div>
 
- 
+ <h4>Delivery Date and Price:</h4> 
 <div class="row">
 <div class="col-lg-6 col-sm-12 col-xs-12 cart-row">
-    <h4>Delivery Date and Time:</h4> 
+   
 
 
     <div class="col-lg-7 col-md-3 col-xs-6" >

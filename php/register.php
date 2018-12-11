@@ -12,6 +12,9 @@ $page_title = 'BioMarket | Register';
 if ($userlevel == "MEMBER")
 {
     print "<br><h4>You are already registered!</h4>";
+    include "banner.php";
+    include "categories.php";
+    
 }
 else {
     include "register_me.php";
@@ -24,14 +27,71 @@ if (!is_logged_in())
         {
                 if ($_POST["pswrd"] != $_POST["psw_repeat"])
 		{
-                print "<br><h4>The passwords are not identical!</h4>"; 
+                print "<br><h4>The passwords are not identical!</h4>";
+?>                
+<form action="?page=register" method="post">
+  <div class="form-wrap">
+    <div class="logo">
+        <a href="?page=home"><img id='logo' src="img/logo_colour_toggle.png" /></a>
+    </div>      
+    <h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+	<label for="first_name"><b>First Name</b></label>
+    <input type="text" placeholder="Enter first name" name="f_name" required>
+	<label for="last_name"><b>Last Name</b></label>
+    <input type="text" placeholder="Enter last name" name="l_name" required>
+    	<label for="dob"><b>Date of Birth</b></label>
+    <input type="date" placeholder="Enter Date of Birth" name="dob" required>
+    	<label for="street"><b>Address Line 1</b></label>
+    <input type="text" placeholder="Enter House Number and Street" name="adr_ln_1" required>
+    	<label for="city"><b>Address Line 2</b></label>
+    <input type="text" placeholder="Enter city" name="adr_ln_2" required>
+	<label for="postcode"><b>Postcode</b></label>
+    <input type="text" placeholder="Enter Postcode" name="pstcod" required>
+    	<label for="phone"><b>Phone Number</b></label>
+    <input type="text" placeholder="Enter Phone Number" name="phn_num" required>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="e_mail" required>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="pswrd" required>
+    <label for="psw_repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw_repeat" required>
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+    <button type="submit" class="btn-register">REGISTER</button>
+    
+    <hr>
+    
+    <p>Already have an account?</p>
+    <a href="?page=login"><div class="btn-login">LOGIN</div></a>
+
+  </div>
+</form> 
+<?php                        
                 }
                 else{
                     print "<br><h4>Congratulations on Joining the Bio Market!</h4>"; 
          
-                    include "banner.php";
-                    include "categories.php";
-                   
+           //         include "banner.php";
+           //         include "categories.php";
+?>    
+  <form action="?page=login" method="post">    
+  <div class="form-wrap">
+    <div class="logo">
+        <a href="#"><img id='logo' src="img/logo_colour_toggle.png" /></a>
+    </div>   
+    <h2>Login to an existing account</h2>
+        <p>Email address</p>
+    <input type="text" name="e_mail" placeholder="Your email address ...">
+        <p>Password</p>
+    <input type="password" name="pswrd" placeholder="Your password ...">
+    <p class="forgot-password"><a href="?page=resetpassword">Forgot password?</a></p>
+    <button class="btn-login" type="submit">LOGIN</button>
+    <p>New user?</p>
+    <a href="?page=register"><div class="btn-register">REGISTER</div></a>
+  </div>
+ </form>  
+<?php                     
                 }
         }
     else {

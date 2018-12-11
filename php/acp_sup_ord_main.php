@@ -96,7 +96,7 @@
   <div class="column">
     <h4>Category</h4>
   </div>
-  <div class="column item">
+  <div class="column price">
     <h4>Qty</h4>
   </div>
 
