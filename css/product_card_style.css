@@ -45,7 +45,7 @@ body {
     top: 20px;
     right: 20px;
     z-index: 1;
-    background: rgb(52, 152, 219, 0.8);
+    background: rgba(52, 152, 219, 0.8);
     width: 110px;
     height: 75px;
     padding: 18px 0;
@@ -94,7 +94,7 @@ body {
     position: absolute;
     top: -34px;
     left: 0;
-    background: rgb(0,0,0,0);
+    background: rgba(0,0,0,0);
     padding: 10px 15px;
     color: #FFFFFF;
     font-size: 14px;
@@ -223,7 +223,7 @@ p { padding-left: 10px; }
 .toCard a{  color: #fff;}
 
 .btn-toCard, .toCard:hover{
-    background-color: rgb(52, 152, 219, 0.8);
+    background-color: rgba(52, 152, 219, 0.8);
     border-radius:10px;
     font-size: 20px;
     font-weight: bold;

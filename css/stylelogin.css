@@ -58,7 +58,7 @@ p .forgot-password {
 }
 
 .btn-login:hover{
-    background-color: rgb(52, 152, 219, 0.8);
+    background-color: rgba(52, 152, 219, 0.8);
     border-radius: 10px;
     font-size: 20px;
     font-weight: bold;
@@ -82,7 +82,7 @@ p .forgot-password {
 }
 
 .btn-register:hover{
-    background-color: rgb(52, 152, 219, 0.8);
+    background-color: rgba(52, 152, 219, 0.8);
     border-radius:10px;
     font-size: 20px;
     font-weight: bold;
@@ -108,7 +108,7 @@ p .forgot-password {
 }
 .btn-backtoshop {   width: 230px;    text-align: center; }
 .btn-resetpassword:hover, .btn-backtoshop:hover {
-    background-color: rgb(52, 152, 219, 0.8);
+    background-color: rgba(52, 152, 219, 0.8);
     border-radius: 10px;
     font-size: 20px;
     font-weight: bold;
@@ -132,7 +132,7 @@ p .forgot-password {
 }
 
 .btn-send:hover{
-    background-color: rgb(52, 152, 219, 0.8);
+    background-color: rgba(52, 152, 219, 0.8);
     border-radius:10px;
     font-size: 20px;
     font-weight: bold;
@@ -154,7 +154,7 @@ p .forgot-password {
 }
 
 .btn-amend:hover{
-    background-color: rgb(52, 152, 219, 0.8);
+    background-color: rgba(52, 152, 219, 0.8);
     border-radius:10px;
     font-size: 20px;
     font-weight: bold;

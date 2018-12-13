@@ -92,7 +92,7 @@
 .btn-new-prod a, .btn-details a { color: #fff;}
 .btn-add:hover, .btn-details:hover, .btn-checkout:hover,
 .btn-cart:hover,.btn-new-prod:hover {
-    background-color: rgb(52, 152, 219, 0.8);
+    background-color: rgba(52, 152, 219, 0.8);
     border-radius: 10px;
     font-size: 23px;
     font-weight: bold;

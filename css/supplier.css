@@ -124,7 +124,7 @@ input.btn-suppclear  {
      width: 130px; }
 .btn-supplier:hover,  input.btn-supplier:hover, 
 input.btn-suppdel:hover, input.btn-suppclear:hover  {
-    background-color: rgb(52, 152, 219, 0.8);
+    background-color: rgba(52, 152, 219, 0.8);
     border-radius: 10px;
     font-size: 18px;
     font-weight: bold;
