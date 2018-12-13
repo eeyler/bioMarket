@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 11, 2018 at 11:25 PM
+-- Generation Time: Dec 13, 2018 at 04:38 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `cart_tmp` (
   `prod_id` int(11) NOT NULL,
   `ord_qty` int(8) NOT NULL,
   PRIMARY KEY (`crt_ln`)
-) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cart_tmp`
@@ -45,7 +45,8 @@ INSERT INTO `cart_tmp` (`crt_ln`, `crt_id`, `prod_id`, `ord_qty`) VALUES
 (14, 7, 15, 11),
 (20, 7, 1, 1),
 (16, 7, 12, 3),
-(19, 7, 6, 3);
+(19, 7, 6, 3),
+(57, 9, 5, 23);
 
 -- --------------------------------------------------------
 
@@ -164,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   PRIMARY KEY (`prod_id`),
   KEY `sup_id` (`sup_id`),
   KEY `cat_id` (`cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
@@ -175,7 +176,7 @@ INSERT INTO `products` (`prod_id`, `prod_name`, `price`, `sup_id`, `prod_dsc`, `
 (2, 'Kale Juice', '2.03', 2, 'Kale Juice is an ideal green juice for those looking to support their overall health and feelings of vitality. Each bottle is certified organic, providing the earthy taste of kale along with fibre, Vitamin A, Vitamin C, and more.', 'img/uploads/5bfc8ee02d5a58.55705998.jpg', 2, 10),
 (3, 'Carrot Juice', '0.86', 2, 'You will be surprised by how delicious this carrot juice is, it is a popular way to consume one of your 5-a-day portions of fruit and vegetables. Don’t miss the wonderful taste of our organic carrot juice!', 'img/uploads/5bfc8ebcb60fa4.65547830.jpg', 2, 109),
 (4, 'Broccoli and Ricotta Pie', '1.25', 1, 'A scrumptious pie that will be a treat to your taste buds, made using simple ingredients. Apart from being lip-smacking, this savoury dish will be a healthy option for your little ones too.', 'img/uploads/5bfc8dc80e44b7.38413046.jpg', 1, 100),
-(5, 'Bread with Raisins', '2.62', 1, 'This homemade raisin bread is a delicious, lightly sweetened yeast bread. It\'s wonderful sliced right off the loaf, and it makes fabulous toast. Whichever way you like it, homemade raisin bread is a top-notch breakfast choice.', 'img/uploads/5bfc8b69202624.26787220.jpg', 1, 122),
+(5, 'Bread with Raisins', '2.62', 1, 'This homemade raisin bread is a delicious, lightly sweetened yeast bread. It\'s wonderful sliced right off the loaf, and it makes fabulous toast. Whichever way you like it, homemade raisin bread is a top-notch breakfast choice.', 'img/uploads/5bfc8b69202624.26787220.jpg', 1, 99),
 (6, 'Coconut Bars', '3.58', 1, 'Only four ingredients to make these healthy coconut bars Coconut Butter, unsweetened shredded coconut, Pure Maple Syrup substitution, and also sectre Biomarket ingredient.', 'img/uploads/5bfc8dea460e81.62966147.jpg', 1, 18),
 (7, 'French Baguette', '2.14', 1, 'The ingredients in baguettes are pure simplicity: flour, water, black salt, and yeast, the Biomarket\'s technique that turns an average baguette into an all-star. Right out of the oven, will have a crunchy, deep golden brown crust.', 'img/uploads/5bfc8e819496a5.59336623.jpg', 1, 182),
 (8, 'Yogurt', '0.50', 4, 'Buy the delicious Greek style natural yogurt made with British milk in the West Country, it has a neutral taste and a lovely. You’ll love it as it is extra thick and spoonable! Most importantly, it’s a low-fat natural yogurt.', 'img/uploads/5bfc93e69e7ae7.06241521.jpg', 4, 16),
@@ -187,7 +188,16 @@ INSERT INTO `products` (`prod_id`, `prod_name`, `price`, `sup_id`, `prod_dsc`, `
 (14, 'Tomatoes', '1.52', 3, 'Tomatoes originated in western South America, and our tomatoes are shipped directly from South America’s greenhouses. Fresh, no hidden nitrates.', 'img/uploads/5bfc96d55d6458.60612011.jpg', 3, 2),
 (15, 'Lime and Apple Juice', '3.56', 2, 'It is a lightly sparkling blend of pure apple and lime juice with spring water and nothing else. The sweetness of this drink will surprise you. The perfect drink to have every day to cheer your day up!', 'img/uploads/5bfca66b203680.63516952.jpg', 2, 119),
 (16, 'Quark Breakfast', '10.10', 4, 'They are a delicious satisfying blend of wholegrain oats, wheat and fruity raisins slowly oven-baked until rich, moist and golden. A perfect mix of your favourite breakfast ingredients all wrapped up in a satisfying bar. ', 'img/uploads/5bfca7094f5864.47772269.jpg', 4, 15),
-(17, 'Onions', '1.25', 3, 'More than just a tasty culinary plant, the onion contains natural sugar, vitamins A, B6, C and E, minerals such as sodium, potassium, iron and dietary fibre. In addition, onions are a good source of folic acid.', 'img/uploads/5bfca533eb0f58.64750428.jpg', 3, 79);
+(17, 'Onions', '1.25', 3, 'More than just a tasty culinary plant, the onion contains natural sugar, vitamins A, B6, C and E, minerals such as sodium, potassium, iron and dietary fibre. In addition, onions are a good source of folic acid.', 'img/uploads/5bfca533eb0f58.64750428.jpg', 3, 79),
+(18, 'Broccoli Pie', '1.15', 1, 'Broccoli Pie is a scrumptious pie that will be a treat to your taste buds. This continental Biomarket recipe is made using simple ingredients such as broccoli. A healthy snack that is the family favorite everywhere.', 'img/uploads/5c11da23e178e9.89837852.jpg', 1, 32),
+(19, 'Raspberry', '2.12', 1, 'Biomarket found a wonderful way to use raspberries growed in the Sussex forests. Four cups of fresh raspberries and a hint of cinnamon are inside this incredible double-crust pie. The sweetenrs used – organic royal honey !', 'img/uploads/5c11da6b9d22b0.21386772.jpg', 1, 42),
+(20, 'Veggie Pastry', '1.22', 1, 'These spiced vegetable pastries make a great vegetarian alternative to sausage rolls, as they\'re packed with classic Indian flavours, as well as onions, potato, carrots, beans and peas. ', 'img/uploads/5c11dab9a3e923.08753796.jpg', 1, 23),
+(21, 'Orange Juice', '2.10', 2, 'This juice has no added sugar. It has concentrated low calorie, whole orange soft drink with sweeteners. It contains naturally occurring sugars. It has no artificial colours or flavours. It is suitable for vegetarians.', 'img/uploads/5c11db04b31992.80544926.jpg', 2, 41),
+(22, 'Avocado and Lime', '1.12', 2, 'It is a lightly sparkling blend of pure apple and lime juice with spring water and nothing else. The sweetness of this drink will surprise you. Perfect drink to have every day to cheer your day up!', 'img/uploads/5c11db311d1e94.39763386.jpg', 2, 12),
+(23, 'Icecream', '3.12', 4, 'This ice cream is made with fresh whole milk from our own herd. We want you to enjoy the luxury of real, smooth and creamy ice cream at an affordable price. It’s the real dairy Ice Cream!', 'img/uploads/5c11db6a9c8900.71535680.jpg', 4, 24),
+(24, 'Almond Milk', '3.12', 4, 'Especially unsweetened almond drink with added calcium, vitamin B12, riboflavin and vitamin D. It’s nicely blended with almonds for natural flavour. Perfect to be added to a healthy breakfast!', 'img/uploads/5c11dbafc17dd0.71461455.jpg', 4, 41),
+(25, 'Zucchini', '2.00', 3, 'Zucchini contains zero fat and is high in water and fibre, also contains antioxidant and anti-inflammatory phytonutrients. This makes zucchini, also known as courgette, a nutrient-dense food that you should include in your diet.', 'img/uploads/5c11dbed03fc50.56570735.jpg', 3, 45),
+(26, 'Cucumbers', '1.12', 3, 'Whether you eat them in a salad, soup, or sandwich, cucumbers are a hydrating veggie. They\'re 95 percent water and a good source of vitamin K, important for blood clotting.', 'img/uploads/5c11dc111145d5.88012858.jpg', 3, 56);
 
 -- --------------------------------------------------------
 

@@ -42,7 +42,7 @@
 ?>
 
 <h4>Submitted Orders</h4>  
-<div class="row header">
+<div class="row header-supplier">
   <div class="column cname">
     <h4>Supplier Order Id</h4>
    </div>
@@ -105,7 +105,7 @@ if (isset($_POST["sup_ord_id1"]))
         echo "<h2>Order Lines</h2>";
         echo "<h4>Detail for Order: ".$_POST["sup_ord_id1"]."</h4>";
 ?>                        
-<div class="row header">
+<div class="row header-supplier">
   <div class="column cname">
     <h4>Supplier Order Line</h4>
    </div>

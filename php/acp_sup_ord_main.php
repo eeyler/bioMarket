@@ -77,7 +77,7 @@
     $search = "SELECT * FROM products, category WHERE products.cat_id = category.cat_id AND products.cat_id = '$cat_tmp' ORDER BY products.cat_id";
     $result = mysqli_query($mysqli, $search);  
 ?>
-<div class="row header">
+<div class="row header-supplier">
   <div class="column cname">
     <h4>Product Name</h4>
    </div>
@@ -160,7 +160,7 @@ echo "<div class= 'column item'>
 
 ?>              
                 
-<div class="row header">
+<div class="row header-supplier">
   <div class="column cname">
     <h4>Supplier Order Id</h4>
    </div>

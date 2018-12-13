@@ -44,7 +44,7 @@
                                 <div class="post-content">
                                     <h1 class="title">DRINKS</h1>
                                     <h2 class="sub_title">Fresh and tasty</h2>
-                                    <p class="description">Try our fresh bakery made with love</p>
+                                    <p class="description">Try our fresh drinks made with love</p>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                                 <div class="post-content">
                                     <h1 class="title">VEGGIES</h1>
                                     <h2 class="sub_title">Fresh and tasty</h2>
-                                    <p class="description">Try our fresh bakery made with love</p>
+                                    <p class="description">Try our fresh vegetables collected with love</p>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                                 <div class="post-content">
                                     <h1 class="title">DAIRY</h1>
                                     <h2 class="sub_title">Fresh and tasty</h2>
-                                    <p class="description">Try our fresh bakery made with love</p>
+                                    <p class="description">Try our fresh dairy made with love</p>
                                 </div>
                             </div>
                         </div>

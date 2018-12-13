@@ -40,7 +40,7 @@ include "admin_panel_connection.php";
         $result = mysqli_query($mysqli, $search);        
 ?>
 
-<div class="row header">
+<div class="row header-supplier">
   <div class="column cname">
     <h4>Supplier Order Id</h4>
    </div>
@@ -112,7 +112,7 @@ include "admin_panel_connection.php";
     
 ?>	
 		
-<div class="row header">
+<div class="row header-supplier">
   <div class="column cname">
     <h4>Supplier Order Line</h4>
    </div>
