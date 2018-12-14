@@ -18,9 +18,16 @@
                     </div>
                     <!-- / Logo  -->
                     <!-- cart  -->
-                    <div class="cart-icon">
-                        <a title='BASKET' href="#"> <i class="fa fa-shopping-basket fa-3x"></i></a>
-                    </div>
+                    <?php
+                    $userlevel = get_user_level();
+                    if ($userlevel == "MEMBER")
+                    {  
+                    print "<div class='cart-icon'>
+                        <a title='BASKET' href='?page=cart'> <i class='fa fa-shopping-basket fa-3x'></i></a>
+                    </div>";
+                    }
+                    ?>              
+                    
                     <!-- / cart  -->
                 </div>
                 <!-- Navbar -->
