@@ -30,7 +30,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel='stylesheet prefetch' href='css/__codepen_io_andytran_pen.css'>
         <link rel="stylesheet" href="css/product_card_style.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
+<!--        <link rel="stylesheet" href="css/font-awesome.min.css"> -->
 
 
 
